@@ -27,8 +27,9 @@ class _SplashScreenState extends State<SplashScreen> {
       color: Color(0xFFFFDE32),
       child: Center(
         child: Text(
-          'Case-It-Logo',
+          'Case It',
           style: TextStyle(
+            fontFamily: 'DancingScript',
             decoration: TextDecoration.none,
             fontSize: 48,
             color: Colors.black,
