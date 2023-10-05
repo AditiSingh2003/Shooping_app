@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/Widget/curvedHeader.dart';
-import 'package:shopping_app/Widget/product.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class CurvedHeader extends StatefulWidget {
+  const CurvedHeader({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<CurvedHeader> createState() => _CurvedHeaderState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CurvedHeaderState extends State<CurvedHeader> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      leading: Icon(Icons.menu),
+      appBar: AppBar(leading: Icon(Icons.menu),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
@@ -54,29 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
         toolbarHeight: 60,
         backgroundColor: Color(0xFFFFDE32),
         automaticallyImplyLeading: false,
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: 100,
-              itemBuilder: (BuildContext context, int index) => 
-              Row(
-                children: [
-                  Flexible(
-                    flex: 2,
-                    child: Product()
-                    ),
-                    Flexible(
-                    flex: 2,
-                    child: Product()
-                    ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

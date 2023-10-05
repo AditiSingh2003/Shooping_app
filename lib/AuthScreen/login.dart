@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shopping_app/AuthScreen/mobile.dart';
 import 'package:shopping_app/AuthScreen/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Home/homeScreen.dart';
 import '../Widget/header.dart';
 
 class Login_Signup extends StatefulWidget {
@@ -11,6 +13,9 @@ class Login_Signup extends StatefulWidget {
 }
 
 class _Login_SignupState extends State<Login_Signup> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,6 +102,7 @@ class _Login_SignupState extends State<Login_Signup> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextFormField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     hintText: 'Email',
                     prefixIcon: Icon(Icons.email_outlined),
@@ -112,6 +118,7 @@ class _Login_SignupState extends State<Login_Signup> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextFormField(
+                  controller: _passwordController,
                   decoration: InputDecoration(
                     hintText: 'Password',
                     prefixIcon: Icon(Icons.key),
@@ -144,10 +151,23 @@ class _Login_SignupState extends State<Login_Signup> {
                 width: double.infinity, // Occupies full width
                 margin: EdgeInsets.symmetric(horizontal: 20), // Add margin for spacing
                 child: TextButton(
-                  onPressed: () {
-                    
-                    // TODO
-                  },
+                onPressed: () async {
+                try {
+                  UserCredential userCredential =
+                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  );
+                  if(userCredential.user?.uid != null)
+                  {
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                  }
+                  print('Login successful: ${userCredential.user?.uid}');
+                } on FirebaseAuthException catch (e) {
+                  print('Login failed: $e');
+                }
+              },
                   style: TextButton.styleFrom(
                     backgroundColor: Color(0xFFFFDE32),
                     shape: RoundedRectangleBorder(
@@ -211,7 +231,6 @@ class _Login_SignupState extends State<Login_Signup> {
                   Icon(Icons.phone,)
                 ],
               )
-              
             ],
           ),
         )

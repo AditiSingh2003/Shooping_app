@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shopping_app/AuthScreen/login.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Firebase_Implement/firebase_auth_services.dart';
 import '../Widget/header.dart';
+import '../Firebase_Implement/firebase_auth_services.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -10,6 +13,20 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
+  final FirebaseAuthService _auth = FirebaseAuthService();
+
+  @override
+  void dispose(){
+    _emailController.dispose();
+    _passwordController.dispose();
+    _usernameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,6 +129,7 @@ class _SignUpState extends State<SignUp> {
                 height: 10,
               ),
               TextField(
+                controller: _usernameController,
                 decoration: InputDecoration(
                   hintText: "Enter Your Name",
                   labelText: "Name",
@@ -124,6 +142,7 @@ class _SignUpState extends State<SignUp> {
                 height: 20,
               ),
               TextField(
+                controller: _emailController,
                 decoration: InputDecoration(
                   hintText: "Enter Your Email",
                   labelText: "Email",
@@ -136,6 +155,7 @@ class _SignUpState extends State<SignUp> {
                 height: 20,
               ),
               TextField(
+                controller: _passwordController,
                 decoration: InputDecoration(
                   hintText: "Enter Your Password",
                   labelText: "Password",
@@ -215,7 +235,8 @@ class _SignUpState extends State<SignUp> {
                   ),
                   ),
                   TextButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      await _auth.signUpWithEmailAndPassword(_emailController.text, _passwordController.text);
                       Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Login_Signup()));
                     },
