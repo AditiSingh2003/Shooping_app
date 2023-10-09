@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Home/categoryScroll.dart';
 import 'package:shopping_app/Widget/curvedHeader.dart';
 import 'package:shopping_app/Widget/product.dart';
 
@@ -24,12 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {
-                    // Handle search action
-                  },
-                ),
+                
                 IconButton(
                   icon: Icon(Icons.notifications_active_outlined),
                   onPressed: () {
@@ -55,28 +51,27 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Color(0xFFFFDE32),
         automaticallyImplyLeading: false,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: 100,
-              itemBuilder: (BuildContext context, int index) => 
-              Row(
-                children: [
-                  Flexible(
-                    flex: 2,
-                    child: Product()
-                    ),
-                    Flexible(
-                    flex: 2,
-                    child: Product()
-                    ),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Search',
+                prefixIcon: Icon(Icons.search),
+                suffixIcon: Icon(Icons.mic),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
             ),
-          ),
-        ],
+            CatScroll(),
+            SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
     );
   }

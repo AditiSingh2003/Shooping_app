@@ -1,15 +1,25 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../Home/homeScreen.dart';
+import 'package:shopping_app/AuthScreen/otp.dart';
 import '../Widget/header.dart';
 
 class MobileOtp extends StatefulWidget {
   const MobileOtp({super.key});
+
+  static String verify = "";
 
   @override
   State<MobileOtp> createState() => _MobileOtpState();
 }
 
 class _MobileOtpState extends State<MobileOtp> {
+  TextEditingController countryCode = TextEditingController();
+  var phone = "";
+  @override
+  void initState() {
+    super.initState();
+    countryCode.text = "+91";
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,6 +117,11 @@ class _MobileOtpState extends State<MobileOtp> {
                   height: 20,
                 ),
                 TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      phone = value;
+                    });
+                  },
                   keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 prefixText: "+91 ",
@@ -122,9 +137,23 @@ class _MobileOtpState extends State<MobileOtp> {
             ),
             
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+              onPressed: () async {
+                try{
+                  await FirebaseAuth.instance.verifyPhoneNumber(
+                  phoneNumber: '${countryCode.text + phone}',
+                  verificationCompleted: (PhoneAuthCredential credential) {},
+                  verificationFailed: (FirebaseAuthException e) {},
+                  codeSent: (String verificationId, int? resendToken) {
+                  MobileOtp.verify = verificationId;
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => OTP()));
+                  },
+                  codeAutoRetrievalTimeout: (String verificationId) {},
+                );
+                }
+                catch(e){
+                  print(e);
+                }
               },
               child: Text(
                 'Sign Up',

@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:shopping_app/AuthScreen/mobile.dart';
+import 'package:shopping_app/Home/homeScreen.dart';
 import '../Widget/header.dart';
+import 'package:pinput/pinput.dart';
 
 class OTP extends StatefulWidget {
   const OTP({super.key});
@@ -10,6 +13,8 @@ class OTP extends StatefulWidget {
 }
 
 class _OTPState extends State<OTP> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  var code ="";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +75,7 @@ class _OTPState extends State<OTP> {
               ),
               Text("Enter OTP",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 30,
                 fontWeight: FontWeight.bold
               ),
               ),
@@ -78,24 +83,22 @@ class _OTPState extends State<OTP> {
                 height: 20,
               ),
               Text("We have sent you an OTP on your mobile number",
+              textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 18,
                 color: Colors.grey
               ),
               ),
               SizedBox(
                 height: 20,
               ),
-              Container(
-                width: 300,
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: "Enter OTP",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)
-                    )
-                  ),
-                ),
+              Pinput(
+                length: 6,
+                onChanged: (value) {
+                  setState(() {
+                    code = value;
+                  });
+                },
               ),
               SizedBox(
                 height: 20,
@@ -104,8 +107,27 @@ class _OTPState extends State<OTP> {
                 width: 300,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: (){},
-                  child: Text("Verify OTP"),
+                  onPressed: () async {
+                    try{
+                      PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: MobileOtp.verify, smsCode: code);
+                    // Sign the user in (or link) with the credential
+                    await auth.signInWithCredential(credential);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                        (route) => false,
+                      );
+                    }
+                    catch(e){
+                      print(e);
+                    }
+                  },
+                  child: Text("Verify OTP",
+                  style: TextStyle(
+                    color:Colors.black,
+                    fontSize: 18,
+                  ),
+                  ),
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFFFDE32),
                     shape: RoundedRectangleBorder(
@@ -127,7 +149,11 @@ class _OTPState extends State<OTP> {
                 height: 20,
               ),
               TextButton(
-                onPressed: (){},
+                onPressed: (){
+                  codeSent: (String verificationId, int? resendToken) {
+                  MobileOtp.verify = verificationId;
+                  };
+                },
                 child: Text("Resend OTP",
                 style: TextStyle(
                   fontSize: 16,
