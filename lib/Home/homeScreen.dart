@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Home/banner.dart';
 import 'package:shopping_app/Home/categoryScroll.dart';
 import 'package:shopping_app/Widget/curvedHeader.dart';
 import 'package:shopping_app/Widget/product.dart';
@@ -25,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                
                 IconButton(
                   icon: Icon(Icons.notifications_active_outlined),
                   onPressed: () {
@@ -67,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             CatScroll(),
+            BannerScroll(),
             SizedBox(
               height: 10,
             ),

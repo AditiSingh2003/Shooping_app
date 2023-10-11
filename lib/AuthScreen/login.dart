@@ -133,7 +133,10 @@ class _Login_SignupState extends State<Login_Signup> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    TextButton(onPressed: (){},
+                    TextButton(onPressed: (){
+                      Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                    },
                     child: Text('Forgot Password ?',
                     style: TextStyle(
                       color: Colors.black,

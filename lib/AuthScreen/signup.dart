@@ -1,8 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shopping_app/AuthScreen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Firebase_Implement/firebase_auth_services.dart';
+import 'package:shopping_app/Firebase_Implement/google_sign_in.dart';
+import 'package:shopping_app/Home/homeScreen.dart';
 import '../Widget/header.dart';
+import 'package:shopping_app/Firebase_Implement/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import '../Firebase_Implement/firebase_auth_services.dart';
 
 class SignUp extends StatefulWidget {
@@ -18,6 +23,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _usernameController = TextEditingController();
   final FirebaseAuthService _auth = FirebaseAuthService();
+  final AuthService authService = AuthService();
 
   @override
   void dispose(){
@@ -85,7 +91,9 @@ class _SignUpState extends State<SignUp> {
               Container(
                       width: MediaQuery.of(context).size.width,
                       child:ElevatedButton(
-                  onPressed: () {
+                    onPressed: () async {
+                      AuthService();
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
                     // Add your Google sign-up logic here
                   },
                   style: ElevatedButton.styleFrom(
@@ -260,5 +268,22 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
+  }
+}
+
+
+class AuthService {
+  Future<void> signInWithGoogle() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    final UserCredential userCredential = 
+      await auth.signInWithCredential(credential);
   }
 }
