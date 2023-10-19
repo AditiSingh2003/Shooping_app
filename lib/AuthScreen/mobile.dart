@@ -33,7 +33,7 @@ class _MobileOtpState extends State<MobileOtp> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFFE3E6C),
+            color:  Color(0xFFF08080),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
@@ -44,7 +44,7 @@ class _MobileOtpState extends State<MobileOtp> {
                   ),
                   Row(
                     children: [
-                      Text("Sign Up to Case-It",
+                      Text("Sign Up to Melang",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold
@@ -84,7 +84,7 @@ class _MobileOtpState extends State<MobileOtp> {
                 Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Case ',
+                Text('Mel',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   decoration: TextDecoration.none,
@@ -93,13 +93,13 @@ class _MobileOtpState extends State<MobileOtp> {
                   color: Colors.black,
                 ),
                 ),
-                Text(' It',
+                Text('ang',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   decoration: TextDecoration.none,
                   fontWeight: FontWeight.bold,
                   fontSize: 38,
-                  color: Color(0xFFFE3E6C),
+                  color: Color(0xFFF08080),
                 ),
                 ),
               ],
@@ -160,7 +160,7 @@ class _MobileOtpState extends State<MobileOtp> {
                 style: TextStyle(fontSize: 18),
               ),
               style: ElevatedButton.styleFrom(
-                primary:Color(0xFFFE3E6C),
+                primary:Color(0xFFF08080),
                 onPrimary: Colors.black, // Text color
                 minimumSize: Size(double.infinity, 50), // Full width button
                 shape: RoundedRectangleBorder(

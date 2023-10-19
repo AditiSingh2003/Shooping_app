@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       color: Color(0xFFF08080),
       child: Center(
         child: Text(
-          'Case It',
+          'Melang',
           style: TextStyle(
             fontFamily: 'DancingScript',
             decoration: TextDecoration.none,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/Home/skinCare.dart';
+import 'package:shopping_app/Home/profile.dart';
 import 'package:shopping_app/Widget/product.dart';
 
 class ListScroll extends StatefulWidget {
@@ -74,7 +74,7 @@ class _ListScrollState extends State<ListScroll> {
             ),
           ],
         toolbarHeight: 60,
-        backgroundColor: Color(0xFFFFDE32),
+        backgroundColor: Color(0xFFF08080),
         automaticallyImplyLeading: false,
       ),
       body: Column(
@@ -82,16 +82,16 @@ class _ListScrollState extends State<ListScroll> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Case - ',
+              Text('Mel',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold
               ),
               ),
-              Text('It ',
+              Text('ang',
               style: TextStyle(
                 fontSize: 30,
-                color: Color(0xFFFFDE32),
+                color: Color(0xFFF08080),
                 fontWeight: FontWeight.bold
               ),
               ),

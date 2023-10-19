@@ -28,7 +28,7 @@ class _OTPState extends State<OTP> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFFFDE32),
+            color:  Color(0xFFF08080),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
@@ -39,7 +39,7 @@ class _OTPState extends State<OTP> {
                   ),
                   Row(
                     children: [
-                      Text("Sign Up to Case-It",
+                      Text("Sign Up to Melang",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold
@@ -129,7 +129,7 @@ class _OTPState extends State<OTP> {
                   ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFFFDE32),
+                    primary: Color(0xFFF08080),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)
                     )
@@ -157,7 +157,7 @@ class _OTPState extends State<OTP> {
                 child: Text("Resend OTP",
                 style: TextStyle(
                   fontSize: 16,
-                  color: Color(0xFFFFDE32)
+                  color: Color(0xFFF08080),
                 ),
                 ),
               ),

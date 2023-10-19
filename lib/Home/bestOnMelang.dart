@@ -18,7 +18,6 @@ class _best_On_Melang extends State<best_On_Melang> {
   }
 
   List<String> imagePaths1 = [
-    'assets/images/d1.webp',
     'assets/images/d2.webp',
     'assets/images/d3.webp',
     'assets/images/d4.webp',

@@ -5,15 +5,15 @@ import 'package:shopping_app/Home/categoryScroll.dart';
 import 'package:shopping_app/Home/bestOnMelang.dart';
 import 'package:shopping_app/Home/home1.dart';
 import 'package:shopping_app/Home/comepleteLook.dart';
-import 'package:shopping_app/Home/s1.dart';
+import 'package:shopping_app/Home/profile.dart';
+import 'package:shopping_app/Home/skinCare.dart';
 import 'package:shopping_app/Widget/curvedHeader.dart';
 import 'package:shopping_app/Widget/product.dart';
-import 'grabOrGone.dart';
+import 'saleEndsIn.dart';
 import 'moreYouNeed.dart';
 import 'treandingBrand.dart';
 import 'limitedTimeDeal.dart';
 import 'luxeBrand.dart';
-import 'skinCare.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

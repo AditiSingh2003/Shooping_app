@@ -46,7 +46,7 @@ class _SignUpState extends State<SignUp> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFFFDE32),
+            color:  Color(0xFFF08080),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
@@ -57,7 +57,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   Row(
                     children: [
-                      Text("Sign Up to Case-It",
+                      Text("Sign Up to Melang",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold
@@ -92,13 +92,14 @@ class _SignUpState extends State<SignUp> {
                       width: MediaQuery.of(context).size.width,
                       child:ElevatedButton(
                     onPressed: () async {
-                      AuthService();
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                      signup(context);
+                      // AuthService();
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
                     // Add your Google sign-up logic here
                   },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(double.infinity, 50),
-                    primary: Color(0xFFFFDE32),
+                    primary: Color(0xFFF08080),
                     elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -228,7 +229,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         style: ElevatedButton.styleFrom(
                           minimumSize: Size(150, 50),
-                          primary: Color(0xFFFFDE32),
+                          primary: Color(0xFFF08080),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -251,7 +252,7 @@ class _SignUpState extends State<SignUp> {
                     child: Text("Login",
                     style: TextStyle(
                       fontSize: 20,
-                      color: Color(0xFFFFDE32),
+                      color:Color(0xFFF08080),
                     )
                     ),
                   ),

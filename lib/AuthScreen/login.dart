@@ -29,7 +29,7 @@ class _Login_SignupState extends State<Login_Signup> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFFE3E6C),
+            color:  Color(0xFFF08080),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
@@ -76,7 +76,7 @@ class _Login_SignupState extends State<Login_Signup> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Case ',
+                  Text('Mel',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     decoration: TextDecoration.none,
@@ -85,13 +85,13 @@ class _Login_SignupState extends State<Login_Signup> {
                     color: Colors.black,
                   ),
                   ),
-                  Text(' It',
+                  Text('ang',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.bold,
                     fontSize: 38,
-                    color:Color(0xFFFE3E6C),
+                    color:Color(0xFFF08080),
                   ),
                   ),
                 ],
@@ -172,7 +172,7 @@ class _Login_SignupState extends State<Login_Signup> {
                 }
               },
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFFFE3E6C),
+                    backgroundColor: Color(0xFFF08080),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -207,7 +207,7 @@ class _Login_SignupState extends State<Login_Signup> {
                   child: Text('Sign Up',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Color(0xFFFE3E6C),
+                    color: Color(0xFFF08080),
                   ),
                   ),
                   ),

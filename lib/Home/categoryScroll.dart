@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/Home/scrollScreen.dart';
 
 class CatScroll extends StatefulWidget {
   const CatScroll({super.key});
@@ -33,7 +34,15 @@ class _CatScrollState extends State<CatScroll> {
               itemCount: 11,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => 
-                Container(
+              GestureDetector(
+                onTap: (){
+                  try {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                } catch (e) {
+                  print("Navigation error: $e");
+                }
+                },
+                child : Container(
                   margin: EdgeInsets.only(left: 10),
                   child: Column(
                     children: [
@@ -48,6 +57,7 @@ class _CatScrollState extends State<CatScroll> {
                   ),
                 ),
             ),
+          ),
           ),
         ],
       ),
