@@ -29,7 +29,7 @@ class _Login_SignupState extends State<Login_Signup> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFFFDE32),
+            color:  Color(0xFFFE3E6C),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
@@ -91,7 +91,7 @@ class _Login_SignupState extends State<Login_Signup> {
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.bold,
                     fontSize: 38,
-                    color: Color(0xFFFFDE32),
+                    color:Color(0xFFFE3E6C),
                   ),
                   ),
                 ],
@@ -172,7 +172,7 @@ class _Login_SignupState extends State<Login_Signup> {
                 }
               },
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFFFFDE32),
+                    backgroundColor: Color(0xFFFE3E6C),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -207,7 +207,7 @@ class _Login_SignupState extends State<Login_Signup> {
                   child: Text('Sign Up',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Color(0xFFFFDE32),
+                    color: Color(0xFFFE3E6C),
                   ),
                   ),
                   ),

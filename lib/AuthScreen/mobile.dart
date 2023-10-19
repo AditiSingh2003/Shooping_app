@@ -33,7 +33,7 @@ class _MobileOtpState extends State<MobileOtp> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFFFDE32),
+            color:  Color(0xFFFE3E6C),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
@@ -99,7 +99,7 @@ class _MobileOtpState extends State<MobileOtp> {
                   decoration: TextDecoration.none,
                   fontWeight: FontWeight.bold,
                   fontSize: 38,
-                  color: Color(0xFFFFDE32),
+                  color: Color(0xFFFE3E6C),
                 ),
                 ),
               ],
@@ -160,7 +160,7 @@ class _MobileOtpState extends State<MobileOtp> {
                 style: TextStyle(fontSize: 18),
               ),
               style: ElevatedButton.styleFrom(
-                primary:Color(0xFFFFDE32),
+                primary:Color(0xFFFE3E6C),
                 onPrimary: Colors.black, // Text color
                 minimumSize: Size(double.infinity, 50), // Full width button
                 shape: RoundedRectangleBorder(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CatScroll extends StatefulWidget {
   const CatScroll({super.key});
@@ -9,10 +8,6 @@ class CatScroll extends StatefulWidget {
 }
 
 class _CatScrollState extends State<CatScroll> {
-  final controller = PageController(
-    initialPage: 0,
-  );
-
   List<String> ImagePath = [
     'assets/images/ma1.webp',
     'assets/images/ma2.webp',
@@ -33,7 +28,7 @@ class _CatScrollState extends State<CatScroll> {
         children: [
           SizedBox(height: 10,),
           SizedBox(
-            height: 80,
+            height: 90,
             child: ListView.builder(
               itemCount: 11,
               scrollDirection: Axis.horizontal,
@@ -48,15 +43,10 @@ class _CatScrollState extends State<CatScroll> {
                         child: Image.asset(ImagePath[index]),
                       ),
                       SizedBox(height: 5,),
-                      SmoothPageIndicator(
-                      controller: controller, 
-                      count: ImagePath.length,
-                      effect: WormEffect(), // you can change the effect as needed
-                    ),
+                      
                     ],
                   ),
                 ),
-              
             ),
           ),
         ],

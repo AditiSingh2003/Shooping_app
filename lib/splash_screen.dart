@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFFFFDE32),
+      color: Color(0xFFF08080),
       child: Center(
         child: Text(
           'Case It',

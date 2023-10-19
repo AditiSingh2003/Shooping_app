@@ -1,0 +1,79 @@
+import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+class limited_Time extends StatefulWidget {
+  const limited_Time({Key? key}) : super(key: key);
+
+  @override
+  State<limited_Time> createState() => _limited_Time();
+}
+
+class _limited_Time extends State<limited_Time> {
+  final controller = PageController(initialPage: 0);
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  List<String> imagePaths1 = [
+    'assets/images/f1.webp',
+    'assets/images/f2.webp',
+    'assets/images/f3.webp',
+    'assets/images/f4.webp',
+    'assets/images/f5.webp',
+    'assets/images/f6.webp',
+    'assets/images/f7.webp',
+    'assets/images/f8.webp',
+    'assets/images/f9.webp',
+    'assets/images/f10.webp',
+    'assets/images/f11.webp',
+    'assets/images/f12.webp',
+    'assets/images/f13.webp',
+    'assets/images/f14.webp',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Limited Time Deal',
+        style: TextStyle(
+          color: Colors.black87,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+        ),
+        Container(
+          height: 200,
+          child: ListView.builder(
+            controller: controller,
+            itemCount: imagePaths1.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder:(context, index)
+            {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: 150,
+                  child: Column(
+                    children: [
+                      Container( // Set your desired border radius
+                          child: Image.asset(
+                            imagePaths1[index],
+                            width: 150,
+                            fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
+                ),
+                ),
+              );
+            }
+            ),
+        ),
+      ],
+    );
+  }
+}
