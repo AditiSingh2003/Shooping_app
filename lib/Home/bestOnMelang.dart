@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class best_On_Melang extends StatefulWidget {
   const best_On_Melang({Key? key}) : super(key: key);
@@ -31,12 +30,29 @@ class _best_On_Melang extends State<best_On_Melang> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Best On Melang',
-        style: TextStyle(
-          color: Colors.black87,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+        Stack(
+          children: [
+            Container(
+              height: 50,
+              child: Image.asset('assets/images/Heading.png',
+              width:MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+              )
+              ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: Center(
+                child: Text(
+                  'Best On Melang',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         Container(
           height: 280,

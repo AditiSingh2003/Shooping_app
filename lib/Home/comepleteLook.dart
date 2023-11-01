@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class complete_Look extends StatefulWidget {
   const complete_Look({Key? key}) : super(key: key);
@@ -32,12 +31,29 @@ class _complete_Look extends State<complete_Look> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Complete Look',
-        style: TextStyle(
-          color: Colors.black87,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+        Stack(
+          children: [
+            Container(
+              height: 50,
+              child: Image.asset('assets/images/Heading.png',
+              width:MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+              )
+              ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: Center(
+                child: Text(
+                  'Complete Look',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         Container(
           height: 300,

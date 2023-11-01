@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/Home/scrollScreen.dart';
+import 'package:shopping_app/ProductDetails/scrollScreen.dart';
 
 class CatScroll extends StatefulWidget {
   const CatScroll({super.key});

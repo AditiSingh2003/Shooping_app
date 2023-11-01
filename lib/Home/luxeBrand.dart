@@ -40,13 +40,31 @@ class _luxe_Brand extends State<luxe_Brand> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Luxe Brand',
-        style: TextStyle(
-          color: Colors.black87,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+        Stack(
+          children: [
+            Container(
+              height: 50,
+              child: Image.asset('assets/images/Heading.png',
+              width:MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+              )
+              ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: Center(
+                child: Text(
+                  'Luxe Brands',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        ),
+        SizedBox(height: 10,),
         Container(
           height: 220,
           child: ListView.builder(

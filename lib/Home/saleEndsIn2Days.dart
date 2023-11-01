@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Home1 extends StatefulWidget {
   const Home1({Key? key}) : super(key: key);
@@ -32,12 +31,29 @@ class _Home1 extends State<Home1> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Sale Ends In 2 Days',
-        style: TextStyle(
-          color: Colors.black87,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+        Stack(
+          children: [
+            Container(
+              height: 50,
+              child: Image.asset('assets/images/Heading.png',
+              width:MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+              )
+              ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: Center(
+                child: Text(
+                  'Sale Ends In 2 Days',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         SizedBox(height: 10,),
         Container(

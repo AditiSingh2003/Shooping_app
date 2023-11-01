@@ -4,6 +4,7 @@ import 'package:shopping_app/AuthScreen/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Home/homeScreen.dart';
 import '../Widget/header.dart';
+import 'package:quickalert/quickalert.dart';
 
 class Login_Signup extends StatefulWidget {
   const Login_Signup({super.key});
@@ -15,8 +16,18 @@ class Login_Signup extends StatefulWidget {
 class _Login_SignupState extends State<Login_Signup> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool _obscureText = true;
 
-  @override
+  void failedMessage(){
+    QuickAlert.show(
+      context: context,
+      headerBackgroundColor: Color(0xFFF08080),
+      type: QuickAlertType.error,
+      title: 'Login Failed',
+      text: 'Password or Email is incorrect or Empty',
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -66,11 +77,8 @@ class _Login_SignupState extends State<Login_Signup> {
         ),
       ),
       // body
-      body: Container(
-      child: SingleChildScrollView(
+      body:  SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
-          color: Colors.white,
           child: Column(
             children: [
               Row(
@@ -103,8 +111,15 @@ class _Login_SignupState extends State<Login_Signup> {
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextFormField(
                   controller: _emailController,
+                  validator: (_emailController) {
+                  if (_emailController!.isEmpty) {
+                    return 'Email cannot be empty';
+                  }
+                  return null; // Return null for valid input
+                },
                   decoration: InputDecoration(
                     hintText: 'Email',
+                    labelText: 'Email',
                     prefixIcon: Icon(Icons.email_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -118,9 +133,19 @@ class _Login_SignupState extends State<Login_Signup> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextFormField(
+                  obscureText: _obscureText,
                   controller: _passwordController,
                   decoration: InputDecoration(
+                    labelText: 'Password',
                     hintText: 'Password',
+                    suffixIcon: GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                    child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+                  ),
                     prefixIcon: Icon(Icons.key),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -134,8 +159,8 @@ class _Login_SignupState extends State<Login_Signup> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(onPressed: (){
-                      Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                      Navigator.pushNamedAndRemoveUntil(
+                        context, '/HomeScreen', (route) => false);
                     },
                     child: Text('Forgot Password ?',
                     style: TextStyle(
@@ -151,15 +176,15 @@ class _Login_SignupState extends State<Login_Signup> {
                 height: 20,
               ),
               Container(
-                width: double.infinity, // Occupies full width
-                margin: EdgeInsets.symmetric(horizontal: 20), // Add margin for spacing
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 20),
                 child: TextButton(
                 onPressed: () async {
                 try {
                   UserCredential userCredential =
                       await FirebaseAuth.instance.signInWithEmailAndPassword(
-                    email: _emailController.text,
-                    password: _passwordController.text,
+                      email: _emailController.text,
+                      password: _passwordController.text,
                   );
                   if(userCredential.user?.uid != null)
                   {
@@ -168,6 +193,7 @@ class _Login_SignupState extends State<Login_Signup> {
                   }
                   print('Login successful: ${userCredential.user?.uid}');
                 } on FirebaseAuthException catch (e) {
+                  failedMessage();
                   print('Login failed: $e');
                 }
               },
@@ -238,7 +264,8 @@ class _Login_SignupState extends State<Login_Signup> {
           ),
         )
       ),
-      ),
     );
   }
 }
+
+

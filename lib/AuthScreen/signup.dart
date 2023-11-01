@@ -1,14 +1,13 @@
+import 'dart:math';
+import 'package:quickalert/quickalert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shopping_app/AuthScreen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Firebase_Implement/firebase_auth_services.dart';
-import 'package:shopping_app/Firebase_Implement/google_sign_in.dart';
 import 'package:shopping_app/Home/homeScreen.dart';
+
 import '../Widget/header.dart';
-import 'package:shopping_app/Firebase_Implement/google_sign_in.dart';
-import 'package:provider/provider.dart';
-import '../Firebase_Implement/firebase_auth_services.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -24,6 +23,19 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _usernameController = TextEditingController();
   final FirebaseAuthService _auth = FirebaseAuthService();
   final AuthService authService = AuthService();
+  bool isChecked = false;
+  bool _obscureText = true;
+  bool value = false;
+
+  void failedMessage(){
+    QuickAlert.show(
+      context: context,
+      headerBackgroundColor: Color(0xFFF08080),
+      type: QuickAlertType.error,
+      title: 'Login Failed',
+      text: 'Password or Email is incorrect or Empty',
+    );
+  }
 
   @override
   void dispose(){
@@ -87,50 +99,11 @@ class _SignUpState extends State<SignUp> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                      width: MediaQuery.of(context).size.width,
-                      child:ElevatedButton(
-                    onPressed: () async {
-                      signup(context);
-                      // AuthService();
-                      // Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-                    // Add your Google sign-up logic here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50),
-                    primary: Color(0xFFF08080),
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                       // Add some spacing between the icon and text
-                      Text(
-                        'Sign Up with Google',
-                        style: TextStyle(fontSize: 16,
-                        color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(width: 8.0),
-                        Image.asset(
-                          'assets/images/images.png',
-                          width: 24.0,
-                          height: 24.0,
-                        ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text('Or',
+              Text('Create Account',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
               ),
@@ -140,6 +113,7 @@ class _SignUpState extends State<SignUp> {
               TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.person),
                   hintText: "Enter Your Name",
                   labelText: "Name",
                   border: OutlineInputBorder(
@@ -153,6 +127,7 @@ class _SignUpState extends State<SignUp> {
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email),
                   hintText: "Enter Your Email",
                   labelText: "Email",
                   border: OutlineInputBorder(
@@ -164,8 +139,18 @@ class _SignUpState extends State<SignUp> {
                 height: 20,
               ),
               TextField(
+                obscureText: _obscureText,
                 controller: _passwordController,
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock),
+                  suffixIcon: GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                    child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+                  ),
                   hintText: "Enter Your Password",
                   labelText: "Password",
                   border: OutlineInputBorder(
@@ -177,7 +162,9 @@ class _SignUpState extends State<SignUp> {
                 height: 20,
               ),
               TextField(
+                obscureText: true,
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock),
                   hintText: "Confirm Your Password",
                   labelText: "Confirm Password",
                   border: OutlineInputBorder(
@@ -191,9 +178,11 @@ class _SignUpState extends State<SignUp> {
               Row(
                 children: [
                   Checkbox(
-                    value: false,
+                    value: isChecked,
                     onChanged: (value) {
-                      // put the code here
+                      setState(() {
+                        isChecked = value!;
+                      });
                     },
                   ),
                   Expanded(
@@ -220,7 +209,21 @@ class _SignUpState extends State<SignUp> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          try{
+                            await _auth.signUpWithEmailAndPassword(_emailController.text, _passwordController.text);
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => HomeScreen()),
+                              (route) => false,
+                            );
+                          }
+                          catch(e){
+                            print('heelo');
+                            failedMessage();
+                            print(e);
+                          }
+                        },
                         child: Text("Sign Up",
                         style: TextStyle(
                           fontSize: 18,
@@ -245,7 +248,6 @@ class _SignUpState extends State<SignUp> {
                   ),
                   TextButton(
                     onPressed: () async {
-                      await _auth.signUpWithEmailAndPassword(_emailController.text, _passwordController.text);
                       Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Login_Signup()));
                     },

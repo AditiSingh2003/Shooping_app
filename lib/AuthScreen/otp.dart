@@ -65,103 +65,104 @@ class _OTPState extends State<OTP> {
         ),
       ),
 
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              Text("Enter OTP",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold
-              ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text("We have sent you an OTP on your mobile number",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey
-              ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Pinput(
-                length: 6,
-                onChanged: (value) {
-                  setState(() {
-                    code = value;
-                  });
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                width: 300,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    try{
-                      PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: MobileOtp.verify, smsCode: code);
-                    // Sign the user in (or link) with the credential
-                    await auth.signInWithCredential(credential);
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
-                        (route) => false,
-                      );
-                    }
-                    catch(e){
-                      print(e);
-                    }
+      body: SingleChildScrollView(
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text("Enter OTP",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold
+                ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text("We have sent you an OTP on your mobile number",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.grey
+                ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Pinput(
+                  length: 6,
+                  onChanged: (value) {
+                    setState(() {
+                      code = value;
+                    });
                   },
-                  child: Text("Verify OTP",
-                  style: TextStyle(
-                    color:Colors.black,
-                    fontSize: 18,
-                  ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFF08080),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)
-                    )
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  width: 300,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      try{
+                        PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: MobileOtp.verify, smsCode: code);
+                      await auth.signInWithCredential(credential);
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                          (route) => false,
+                        );
+                      }
+                      catch(e){
+                        print(e);
+                      }
+                    },
+                    child: Text("Verify OTP",
+                    style: TextStyle(
+                      color:Colors.black,
+                      fontSize: 18,
+                    ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFF08080),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)
+                      )
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text("Didn't receive OTP ?",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey
-              ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextButton(
-                onPressed: (){
-                  codeSent: (String verificationId, int? resendToken) {
-                  MobileOtp.verify = verificationId;
-                  };
-                },
-                child: Text("Resend OTP",
+                SizedBox(
+                  height: 20,
+                ),
+                Text("Didn't receive OTP ?",
                 style: TextStyle(
                   fontSize: 16,
-                  color: Color(0xFFF08080),
+                  color: Colors.grey
                 ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 20,
+                ),
+                TextButton(
+                  onPressed: (){
+                    codeSent: (String verificationId, int? resendToken) {
+                    MobileOtp.verify = verificationId;
+                    };
+                  },
+                  child: Text("Resend OTP",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFFF08080),
+                  ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

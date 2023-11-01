@@ -156,7 +156,7 @@ class _MobileOtpState extends State<MobileOtp> {
                 }
               },
               child: Text(
-                'Sign Up',
+                'Send OTP',
                 style: TextStyle(fontSize: 18),
               ),
               style: ElevatedButton.styleFrom(

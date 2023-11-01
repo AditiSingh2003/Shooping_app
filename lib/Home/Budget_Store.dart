@@ -50,12 +50,29 @@ class _BudgetStore extends State<BudgetStore> {
     return Column(
       children: [
         SizedBox(height: 5,),
-        Text('More on Category',
-        style: TextStyle(
-          color: Colors.black87,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+        Stack(
+          children: [
+            Container(
+              height: 50,
+              child: Image.asset('assets/images/Heading.png',
+              width:MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+              )
+              ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: Center(
+                child: Text(
+                  'More On Categories',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         Container(
           height: 400,
