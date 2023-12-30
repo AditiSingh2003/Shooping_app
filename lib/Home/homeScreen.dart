@@ -22,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  late final List<String> wishlist;
 
   void _onItemTapped(int index){
     setState(() {
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.pushNamed(context, '/wishlist');
           break;
         case 2:
-          Navigator.pushNamed(context, '/cart');
+          Navigator.pushNamed(context, '/addtocart');
           break;
         case 3:
           Navigator.push(context,
@@ -48,7 +49,25 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      leading: Icon(Icons.menu),
+        leading: Icon(Icons.menu),
+        title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Mel',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold
+              ),
+              ),
+              Text('ang',
+              style: TextStyle(
+                fontSize: 24,
+                color: Color(0xFFF08080),
+                fontWeight: FontWeight.bold
+              ),
+              ),
+            ],
+          ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
@@ -79,9 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ],
-        toolbarHeight: 60,
-        backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),

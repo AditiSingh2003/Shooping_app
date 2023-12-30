@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../ProductDetails/scrollScreen.dart';
+
 class best_On_Melang extends StatefulWidget {
   const best_On_Melang({Key? key}) : super(key: key);
 
@@ -61,21 +63,30 @@ class _best_On_Melang extends State<best_On_Melang> {
             scrollDirection: Axis.horizontal,
             itemBuilder:(context, index)
             {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: 150,
-                  child: Column(
-                    children: [
-                      Container( // Set your desired border radius
-                          child: Image.asset(
-                            imagePaths1[index],
-                            width: 150,
-                            fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: (){
+                  try {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                } catch (e) {
+                  print("Navigation error: $e");
+                }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: 150,
+                    child: Column(
+                      children: [
+                        Container( // Set your desired border radius
+                            child: Image.asset(
+                              imagePaths1[index],
+                              width: 150,
+                              fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                    ],
-                ),
+                      ],
+                  ),
+                  ),
                 ),
               );
             }

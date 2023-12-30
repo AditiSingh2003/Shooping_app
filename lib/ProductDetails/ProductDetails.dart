@@ -1,17 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/NavBar/AddTocart.dart';
+import 'package:shopping_app/NavBar/Wishlist.dart';
+import 'package:shopping_app/Widget/addCart.dart';
+import 'package:shopping_app/Widget/wishlist.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetails extends StatefulWidget {
-  const ProductDetails({super.key});
+  final String productName;
+  final String description;
+  final String i1;
+  final String mrp;
+  final String offerPrice;
+  final String offer;
+  final String documentId;
+
+  ProductDetails({
+    Key? key,
+    required this.productName,
+    required this.description,
+    required this.i1,
+    required this.mrp,
+    required this.offerPrice,
+    required this.offer,
+    required this.documentId,
+  }) : super(key: key);
 
   @override
-  State<ProductDetails> createState() => _ProductDetailsState();
+  State<ProductDetails> createState() => _ProductDetailsState(
+
+  );
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
   final controller = PageController(initialPage: 0);
   bool isFav = false;
   int selectedSizeIndex = -1;
+  bool isCart = false;
+  List<String> wishlist = [];
 
   void selectSize(int index) {
     setState(() {
@@ -23,11 +48,21 @@ class _ProductDetailsState extends State<ProductDetails> {
     });
   }
 
-  void toogleColor(){
-    setState(() {
-      isFav = !isFav;
-    });
-  }
+  void toogleColor( productName,  description,  mrp, offPrice, offer, i1, documentId) {
+  setState(() {
+    isFav = !isFav;
+    if (isFav) {
+      // Add to wishlist
+      wishListAdd(productName, description, mrp, offPrice, offer, i1);
+      wishlist.add(productName);
+    } else {
+      // Remove from wishlist
+      deleteProductByName(productName);
+      wishlist.remove(productName);
+    }
+  });
+}
+
 
   @override
   void dispose() {
@@ -39,18 +74,58 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
+        title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Mel',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold
+              ),
+              ),
+              Text('ang',
+              style: TextStyle(
+                fontSize: 24,
+                color: Color(0xFFF08080),
+                fontWeight: FontWeight.bold
+              ),
+              ),
+            ],
+          ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
         actions: [
-          IconButton(
-            onPressed: (){},
-            icon: Icon(Icons.search),
-          ),
-          IconButton(
-            onPressed: (){},
-            icon: Icon(Icons.shopping_cart_outlined),
-          ),
-        ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.notifications_active_outlined),
+                  onPressed: () {
+                    // Handle bell action
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.favorite_border_outlined),
+                  onPressed: () {
+                    // Handle heart action
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => WishlistPage()));
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.shopping_cart_outlined),
+                  onPressed: () {
+                    // Handle cart action
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => addToCart()));
+                  },
+                ),
+              ],
+            ),
+          ],
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -60,7 +135,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               Container(
                 height: 550,
                 width: MediaQuery.of(context).size.width,
-                child: Image.asset('assets/images/WomenTop3.webp',
+                child: Image.network(widget.i1,
                 fit: BoxFit.cover,
                 ),
               ),
@@ -86,11 +161,18 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(widget.productName,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500
+                      ),
+                      ),
+                      SizedBox(height: 10,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Flexible(
-                      child: Text('QOMN Blue Print Mandarin Pure Cotton Longline Top',
+                      child: Text(widget.description,
                       maxLines: 2,
                       style: TextStyle(
                         fontSize: 16,
@@ -98,7 +180,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ),
                     IconButton(
-                      onPressed: toogleColor,
+                      onPressed: () {
+                        toogleColor(widget.productName, widget.description, widget.mrp, widget.offerPrice, widget.offer, widget.i1, widget.documentId);
+                      },
                       color: isFav ? Colors.red : Colors.black,
                       icon: Icon(
                         isFav ? Icons.favorite : Icons.favorite_border_outlined,
@@ -109,7 +193,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                 SizedBox(height: 10,),
                 Row(
                   children: [
-                    Text('₹999',
+                    Text( '₹',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500
+                    ),
+                    ),
+                    Text( widget.offerPrice,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500
@@ -118,7 +208,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                     SizedBox(
                       width: 10,
                     ),
-                    Text('MRP ₹1499',
+                    Text('MRP',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.lineThrough,
+                      color: Colors.grey
+                    ),
+                    ),
+                    Text(widget.mrp,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -129,7 +227,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                     SizedBox(
                       width: 10,
                     ),
-                    Text('50% off',
+                    Text( widget.offer,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.green
+                    ),
+                    ),
+                    Text('% off',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -232,6 +337,46 @@ class _ProductDetailsState extends State<ProductDetails> {
                       SizedBox(width: 10,),
                       buildSizeButton(3, 'XL'),
                     ],
+                  ),
+                  SizedBox(height: 10,),
+                  GestureDetector(
+                    onTap: (){
+                        if(selectedSizeIndex == -1){
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Please select a size'),
+                            ),
+                          );
+                        }else{
+                          setState(() {
+                            isCart = true;
+                          });
+                        }
+                      },
+                      child: GestureDetector(
+                        onTap: (){
+                          print('add to cart');
+                          addToCartAdd(widget.productName, widget.description, widget.mrp, widget.offerPrice, widget.offer, widget.i1);
+                        },
+                        child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            isCart ? 'Go to Cart' : 'Add to Cart',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                                          ),
+                      ),
                   ),
                   SizedBox(height: 10,),
                   Text('Product Details',

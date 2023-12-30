@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/ProductDetails/scrollScreen.dart';
 
 class complete_Look extends StatefulWidget {
   const complete_Look({Key? key}) : super(key: key);
@@ -63,21 +64,30 @@ class _complete_Look extends State<complete_Look> {
             scrollDirection: Axis.horizontal,
             itemBuilder:(context, index)
             {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    children: [
-                      Container( // Set your desired border radius
-                          child: Image.asset(
-                            imagePaths1[index],
-                            width: MediaQuery.of(context).size.width,
-                            fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: (){
+                  try {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                } catch (e) {
+                  print("Navigation error: $e");
+                }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      children: [
+                        Container( // Set your desired border radius
+                            child: Image.asset(
+                              imagePaths1[index],
+                              width: MediaQuery.of(context).size.width,
+                              fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                    ],
-                ),
+                      ],
+                  ),
+                  ),
                 ),
               );
             }

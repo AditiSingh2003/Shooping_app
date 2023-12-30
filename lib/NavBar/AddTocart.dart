@@ -1,24 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/ProductDetails/ProductDetails.dart';
+import 'package:shopping_app/Widget/addCart.dart';
 
-class Product extends StatefulWidget {
-  const Product({Key? key}) : super(key: key);
+class addToCart extends StatefulWidget {
+  const addToCart({super.key});
 
   @override
-  State<Product> createState() => _ProductState();
+  State<addToCart> createState() => _addToCartState();
 }
-class _ProductState extends State<Product> {
-  bool isFav = false;
 
-
+class _addToCartState extends State<addToCart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('items').snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        stream:  FirebaseFirestore.instance.collection('WishList').snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
           if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
           }
@@ -29,21 +27,26 @@ class _ProductState extends State<Product> {
 
           if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
             return Center(
-              child: Text('No data available.'),
+              child: Text(
+                'Your Wishlist is empty',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             );
           }
 
-          return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) {
-              DocumentSnapshot document = snapshot.data!.docs[index];
-              Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+        return ListView.builder(
+          itemCount: snapshot.data!.docs.length,
+          itemBuilder: (context,index){
+            DocumentSnapshot document =  snapshot.data!.docs[index];
+            Map<String, dynamic> data  = document.data() as Map<String, dynamic>;
 
-              // Extracting image URLs
-              String imageUrl1 = data['i1'];
-              String imageUrl2 = data['i2'];
+            String imageUrl1 = data['i1'];
+            String product = data['productName'];
 
-              return Container(
+            return Container(
               child: GestureDetector(
                 onTap: (){
                   Navigator.push(context,
@@ -128,15 +131,41 @@ class _ProductState extends State<Product> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10,)
+                    SizedBox(height: 10,),
+                    GestureDetector(
+                        onTap: (){
+                          deleteProductByNameCart(product);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: Container(
+                          height: 50,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text( 'Remove from Cart',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          ),
+                        ),
+                  ),
+                  SizedBox(height: 10,),
                   ],
                 ),
               ),
             );
-            },
+          }
           );
-        },
-      ),
+        }
+        ),
     );
   }
 }

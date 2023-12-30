@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../ProductDetails/scrollScreen.dart';
+
 class BudgetStore extends StatefulWidget {
   const BudgetStore({Key? key}) : super(key: key);
 
@@ -82,30 +84,39 @@ class _BudgetStore extends State<BudgetStore> {
             scrollDirection: Axis.horizontal,
             itemBuilder:(context, index)
             {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: 150,
-                  child: Column(
-                    children: [
-                      SizedBox(height: 10,),
-                      Container( // Set your desired border radius
-                          child: Image.asset(
-                            imagePaths1[index],
-                            width: 150,
-                            fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: (){
+                  try {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                } catch (e) {
+                  print("Navigation error: $e");
+                }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: 150,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 10,),
+                        Container( // Set your desired border radius
+                            child: Image.asset(
+                              imagePaths1[index],
+                              width: 150,
+                              fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 5,),
-                      Container( // Set your desired border radius
-                          child: Image.asset(
-                            imagePaths2[index],
-                            width: 150,
-                            fit: BoxFit.cover,
+                        SizedBox(height: 5,),
+                        Container( // Set your desired border radius
+                            child: Image.asset(
+                              imagePaths2[index],
+                              width: 150,
+                              fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                    ],
-                ),
+                      ],
+                  ),
+                  ),
                 ),
               );
             }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../ProductDetails/scrollScreen.dart';
+
 class grab_Or_Gone extends StatefulWidget {
   const grab_Or_Gone({Key? key}) : super(key: key);
 
@@ -74,11 +76,20 @@ class _grab_Or_Gone extends State<grab_Or_Gone> {
             itemBuilder: (context, index) {
               double aspectRatio = 4 / 3;
 
-              return Container(
-                padding: EdgeInsets.all(10.0),
-                child: Image.asset(
-                  imagePaths[index],
-                  fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: (){
+                  try {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                } catch (e) {
+                  print("Navigation error: $e");
+                }
+                },
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    imagePaths[index],
+                    fit: BoxFit.cover,
+                  ),
                 ),
               );
             },

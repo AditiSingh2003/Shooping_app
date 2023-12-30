@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/BootomNavBar/fetchData.dart';
+import 'package:shopping_app/BootomNavBar/insertItem.dart';
+import 'package:shopping_app/Home/homeScreen.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -47,8 +50,8 @@ class _ProfileState extends State<Profile> {
               Center(
                 child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(context,
-                  //   MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
                 },
                 child: Text(
                   'Edit Profiler',
@@ -65,44 +68,158 @@ class _ProfileState extends State<Profile> {
               ),
               ),
               SizedBox(height: 20,),
-              ButtonList(
-                context: context,
-                icon: Icons.settings,
-                text: 'Settings',
-                col: Colors.black,
-                back : Icons.arrow_forward_ios_rounded,
+              Container(
+                color: Colors.white,
+                height: 60,
+                child: ElevatedButton(onPressed: (){
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Insert()));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.settings,
+                        color: Colors.black,
+                        ),
+                        SizedBox(width: 10,),
+                        Text('Settings',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward_ios_rounded,
+                    color: Colors.black,
+                    )
+                  ],
+                ),
+                ),
               ),
               SizedBox(height: 20,),
-              ButtonList(
-                context: context,
-                icon: Icons.wallet_sharp,
-                text: 'Billing Details',
-                col: Colors.black,
-                back : Icons.arrow_forward_ios_rounded,
+              Container(
+                color: Colors.white,
+                height: 60,
+                child: ElevatedButton(onPressed: (){
+                  // Navigator.push(context,
+                  //   MaterialPageRoute(builder: (context) => FetchData()));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.wallet_sharp,
+                        color: Colors.black,
+                        ),
+                        SizedBox(width: 10,),
+                        Text('Billing Details',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward_ios_rounded,
+                    color: Colors.black,
+                    )
+                  ],
+                ),
+                ),
               ),
               SizedBox(height: 20,),
-              ButtonList(
-                context: context,
-                icon: Icons.account_circle_rounded,
-                text: 'User Management',
-                col: Colors.black,
-                back : Icons.arrow_forward_ios_rounded,
+              Container(
+                color: Colors.white,
+                height: 60,
+                child: ElevatedButton(onPressed: (){},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.account_circle_rounded,
+                        color: Colors.black,
+                        ),
+                        SizedBox(width: 10,),
+                        Text('User Management',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward_ios_rounded,
+                    color: Colors.black,
+                    )
+                  ],
+                ),
+                ),
               ),
               SizedBox(height: 20,),
-              ButtonList(
-                context: context,
-                icon: Icons.info,
-                text: 'Information',
-                col: Colors.black,
-                back : Icons.arrow_forward_ios_rounded,
+              Container(
+                color: Colors.white,
+                height: 60,
+                child: ElevatedButton(onPressed: (){},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.info,
+                        color: Colors.black,
+                        ),
+                        SizedBox(width: 10,),
+                        Text('Information',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward_ios_rounded,
+                    color: Colors.black,
+                    )
+                  ],
+                ),
+                ),
               ),
               SizedBox(height: 20,),
-              ButtonList(
-                context: context,
-                icon: Icons.settings,
-                text: 'Logout',
-                col: Colors.red,
-                back : Icons.arrow_forward_ios_rounded,
+              
+              Container(
+                color: Colors.white,
+                height: 60,
+                child: ElevatedButton(onPressed: (){
+
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.logout,
+                        color: Colors.black,
+                        ),
+                        SizedBox(width: 10,),
+                        Text('Logout',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.red,
+                        ),
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.arrow_forward_ios_rounded,
+                    color: Colors.black,
+                    )
+                  ],
+                ),
+                ),
               ),
             ],
           ),
@@ -122,35 +239,33 @@ class _ProfileState extends State<Profile> {
     required IconData back,
   }) {
     return
-      Container(
-                child: ElevatedButton(
-                  onPressed: (){},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                    Row(
-                      children: [
-                        Icon(icon),
-                        SizedBox(width: 10,),
-                        Text(text,
-                        style: TextStyle(
-                        fontSize: 18,
-                        color: col,
-                      ),
-                    ),
-                      ],
-                    ),
-                  Icon(back)
-                    ],
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    onPrimary: Colors.black,
-                    minimumSize: Size(MediaQuery.of(context).size.width, 60),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                  ),
-                  ),
-              );
+      ElevatedButton(
+        onPressed: (){},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+          Row(
+            children: [
+              Icon(icon),
+              SizedBox(width: 10,),
+              Text(text,
+              style: TextStyle(
+              fontSize: 18,
+              color: col,
+            ),
+          ),
+            ],
+          ),
+        Icon(back)
+          ],
+        ),
+        style: ElevatedButton.styleFrom(
+          primary: Colors.white,
+          onPrimary: Colors.black,
+          minimumSize: Size(MediaQuery.of(context).size.width, 60),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+        ),
+        );
   }

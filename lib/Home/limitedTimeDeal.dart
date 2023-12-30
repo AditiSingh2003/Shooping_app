@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../ProductDetails/scrollScreen.dart';
+
 class limited_Time extends StatefulWidget {
   const limited_Time({Key? key}) : super(key: key);
 
@@ -70,21 +72,30 @@ class _limited_Time extends State<limited_Time> {
             scrollDirection: Axis.horizontal,
             itemBuilder:(context, index)
             {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: 150,
-                  child: Column(
-                    children: [
-                      Container( // Set your desired border radius
-                          child: Image.asset(
-                            imagePaths1[index],
-                            width: 150,
-                            fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: (){
+                  try {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                } catch (e) {
+                  print("Navigation error: $e");
+                }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: 150,
+                    child: Column(
+                      children: [
+                        Container( // Set your desired border radius
+                            child: Image.asset(
+                              imagePaths1[index],
+                              width: 150,
+                              fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                    ],
-                ),
+                      ],
+                  ),
+                  ),
                 ),
               );
             }

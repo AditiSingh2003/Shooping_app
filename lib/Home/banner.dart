@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/ProductDetails/scrollScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BannerScroll extends StatefulWidget {
@@ -43,14 +44,23 @@ class _BannerScrollState extends State<BannerScroll> {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Container(
                 margin: EdgeInsets.only(left: 10),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 180,
-                      width: MediaQuery.of(context).size.width,
-                      child: Image.asset(imagePaths[index]),
-                    ),
-                  ],
+                child: GestureDetector(
+                  onTap: (){
+                  try {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                } catch (e) {
+                  print("Navigation error: $e");
+                }
+                },
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 180,
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.asset(imagePaths[index]),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
