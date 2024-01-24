@@ -46,10 +46,12 @@ Melang is a Flutter application that aims to improve the efficiency and responsi
 <img src="https://github.com/AditiSingh2003/Shooping_app/assets/97729662/3fd38bb4-12bf-47b3-9cad-281fa029982e" alt="Image 13" style="width:300px; height:600px;">
 
 
-https://github.com/AditiSingh2003/Shooping_app/assets/97729662/db270296-b689-465b-ae4a-d82d1fa6d198
-
-
 ## Demo
+
+
+https://github.com/AditiSingh2003/Shooping_app/assets/97729662/d6e26c6a-fa8d-4bbc-9bea-0e52113c84d9
+
+
 
 ## Getting Started
 To get started with Melang, follow these steps:
