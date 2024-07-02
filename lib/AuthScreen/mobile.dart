@@ -160,8 +160,7 @@ class _MobileOtpState extends State<MobileOtp> {
                 style: TextStyle(fontSize: 18),
               ),
               style: ElevatedButton.styleFrom(
-                primary:Color(0xFFF08080),
-                onPrimary: Colors.black, // Text color
+                foregroundColor: Colors.black, backgroundColor: Color(0xFFF08080), // Text color
                 minimumSize: Size(double.infinity, 50), // Full width button
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0), // Button border radius

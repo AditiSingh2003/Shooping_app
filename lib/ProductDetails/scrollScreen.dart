@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/BootomNavBar/profile.dart';
-import 'package:shopping_app/NavBar/AddTocart.dart';
-import 'package:shopping_app/NavBar/Wishlist.dart';
+import 'package:shopping_app/AddToCart/AddTocart.dart';
+import 'package:shopping_app/WishList/Wishlist.dart';
 import 'package:shopping_app/Widget/product.dart';
 
 class ListScroll extends StatefulWidget {

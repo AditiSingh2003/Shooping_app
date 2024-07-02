@@ -129,7 +129,7 @@ class _OTPState extends State<OTP> {
                     ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFF08080),
+                      backgroundColor: Color(0xFFF08080),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)
                       )

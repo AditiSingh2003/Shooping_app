@@ -197,8 +197,7 @@ class _InsertState extends State<Insert> {
                 style: TextStyle(fontSize: 18),
               ),
               style: ElevatedButton.styleFrom(
-                primary:Color(0xFFF08080),
-                onPrimary: Colors.black,
+                foregroundColor: Colors.black, backgroundColor: Color(0xFFF08080),
                 minimumSize: Size(MediaQuery.of(context).size.width/2, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),

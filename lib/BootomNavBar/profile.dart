@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shopping_app/BootomNavBar/fetchData.dart';
 import 'package:shopping_app/BootomNavBar/insertItem.dart';
 import 'package:shopping_app/Home/homeScreen.dart';
@@ -50,16 +51,15 @@ class _ProfileState extends State<Profile> {
               Center(
                 child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                  // Navigator.push(context,
+                  //   MaterialPageRoute(builder: (context) => HomeScreen()));
                 },
                 child: Text(
                   'Edit Profiler',
                   style: TextStyle(fontSize: 18),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary:Color(0xFFF08080),
-                  onPrimary: Colors.black,
+                  foregroundColor: Colors.black, backgroundColor: Color(0xFFF08080),
                   minimumSize: Size(MediaQuery.of(context).size.width/2, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -72,8 +72,8 @@ class _ProfileState extends State<Profile> {
                 color: Colors.white,
                 height: 60,
                 child: ElevatedButton(onPressed: (){
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Insert()));
+                  // Navigator.push(context,
+                  //   MaterialPageRoute(builder: (context) => Insert()));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -195,7 +195,7 @@ class _ProfileState extends State<Profile> {
                 color: Colors.white,
                 height: 60,
                 child: ElevatedButton(onPressed: (){
-
+                  SystemNavigator.pop();
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -260,8 +260,7 @@ class _ProfileState extends State<Profile> {
           ],
         ),
         style: ElevatedButton.styleFrom(
-          primary: Colors.white,
-          onPrimary: Colors.black,
+          foregroundColor: Colors.black, backgroundColor: Colors.white,
           minimumSize: Size(MediaQuery.of(context).size.width, 60),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),

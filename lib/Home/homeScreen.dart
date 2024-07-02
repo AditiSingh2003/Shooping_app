@@ -87,12 +87,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: Icon(Icons.favorite_border_outlined),
                   onPressed: () {
                     // Handle heart action
+                    Navigator.pushNamed(context, '/wishlist');
                   },
                 ),
                 IconButton(
                   icon: Icon(Icons.shopping_cart_outlined),
                   onPressed: () {
                     // Handle cart action
+                    Navigator.pushNamed(context, '/addtocart');
                   },
                 ),
               ],

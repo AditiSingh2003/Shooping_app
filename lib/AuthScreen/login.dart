@@ -159,8 +159,8 @@ class _Login_SignupState extends State<Login_Signup> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(onPressed: (){
-                      Navigator.pushNamedAndRemoveUntil(
-                        context, '/HomeScreen', (route) => false);
+                      // Navigator.pushNamedAndRemoveUntil(
+                        // context, '/HomeScreen', (route) => false);
                     },
                     child: Text('Forgot Password ?',
                     style: TextStyle(

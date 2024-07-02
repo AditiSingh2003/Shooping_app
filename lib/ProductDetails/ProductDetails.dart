@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/NavBar/AddTocart.dart';
-import 'package:shopping_app/NavBar/Wishlist.dart';
-import 'package:shopping_app/Widget/addCart.dart';
-import 'package:shopping_app/Widget/wishlist.dart';
+import 'package:shopping_app/AddToCart/AddTocart.dart';
+import 'package:shopping_app/WishList/Wishlist.dart';
+import 'package:shopping_app/AddToCart/addCartFunctionality.dart';
+import 'package:shopping_app/WishList/wishlistFunctionality.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -340,43 +340,38 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   SizedBox(height: 10,),
                   GestureDetector(
-                    onTap: (){
-                        if(selectedSizeIndex == -1){
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('Please select a size'),
-                            ),
-                          );
-                        }else{
-                          setState(() {
-                            isCart = true;
-                          });
-                        }
-                      },
-                      child: GestureDetector(
-                        onTap: (){
-                          print('add to cart');
+                    onTap: () {
+                      if (selectedSizeIndex == -1) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Please select a size'),
+                          ),
+                        );
+                      } else {
+                        setState(() {
                           addToCartAdd(widget.productName, widget.description, widget.mrp, widget.offerPrice, widget.offer, widget.i1);
-                        },
-                        child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Text(
-                            isCart ? 'Go to Cart' : 'Add to Cart',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          isCart = true;
+                        });
+                      }
+                    },
+                    child: Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text(
+                          isCart ? 'Go to Cart' : 'Add to Cart',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                                          ),
                       ),
+                    ),
                   ),
                   SizedBox(height: 10,),
                   Text('Product Details',

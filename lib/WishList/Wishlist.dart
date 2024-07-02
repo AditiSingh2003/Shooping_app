@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:shopping_app/Widget/wishlist.dart';
+import 'package:shopping_app/BootomNavBar/profile.dart';
+import 'package:shopping_app/WishList/wishlistFunctionality.dart';
 
 import '../ProductDetails/ProductDetails.dart';
 
@@ -12,14 +13,79 @@ class WishlistPage extends StatefulWidget {
 }
 
 class _WishlistPageState extends State<WishlistPage> {
+  int _selectedIndex = 0;
+  late final List<String> wishlist;
+
+  void _onItemTapped(int index){
+    setState(() {
+      _selectedIndex = index;
+      switch(index) {
+        case 0:
+          Navigator.pushNamed(context, '/home');
+          break;
+        case 1:
+          Navigator.pushNamed(context, '/wishlist');
+          break;
+        case 2:
+          Navigator.pushNamed(context, '/addtocart');
+          break;
+        case 3:
+          Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profile()));
+          break;
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Wish',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold
+              ),
+              ),
+              Text('List',
+              style: TextStyle(
+                fontSize: 24,
+                color: Color(0xFFF08080),
+                fontWeight: FontWeight.bold
+              ),
+              ),
+            ],
+          ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: (){
+              Navigator.pushNamed(context, '/addtocart');
+            },
+            icon: Icon(Icons.shopping_cart_outlined),
+          ),
+        ],
+      ),
       body: StreamBuilder(
         stream:  FirebaseFirestore.instance.collection('WishList').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Center(
+              child: Text(
+                'Hold A Second!',
+                maxLines: 3,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            );
           }
 
           if (snapshot.hasError) {
@@ -167,6 +233,38 @@ class _WishlistPageState extends State<WishlistPage> {
           );
         }
         ),
+        bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined,
+            color:  Colors.black,
+            ),
+            label: 'Home',
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border_outlined,
+            color:  Colors.black,),
+            label: 'Wishlist',
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart_outlined,
+            color:  Colors.black,),
+            label: 'Cart',
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_outlined,
+            color: Colors.black,),
+            label: 'Account',
+
+            backgroundColor: Colors.white,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      )
     );
   }
 }

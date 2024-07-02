@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Home/homeScreen.dart';
-import 'package:shopping_app/NavBar/AddTocart.dart';
-import 'package:shopping_app/NavBar/Wishlist.dart';
+import 'package:shopping_app/WishList/Wishlist.dart';
 import 'package:shopping_app/splash_screen.dart';
+import 'package:shopping_app/AddToCart/AddTocart.dart';
 
 
 void main() async {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/HomeScreen': (context) => HomeScreen(),
+        '/home': (context) => HomeScreen(),
         '/wishlist': (context) => WishlistPage(),
         '/addtocart': (context) => addToCart(),
       },

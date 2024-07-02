@@ -20,7 +20,16 @@ class _ProductState extends State<Product> {
         stream: FirebaseFirestore.instance.collection('items').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Center(
+              child: Text(
+                'Hold A Second!',
+                maxLines: 3,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            );
           }
 
           if (snapshot.hasError) {
