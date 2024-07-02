@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:shopping_app/AddToCart/AddTocart.dart';
 
 void addToCartAdd(
   String productName,

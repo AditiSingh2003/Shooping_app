@@ -44,15 +44,15 @@ class _grab_Or_Gone extends State<grab_Or_Gone> {
       children: [
         Stack(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: Image.asset('assets/images/Heading.png',
               width:MediaQuery.of(context).size.width,
               fit: BoxFit.fill,
               )
               ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 15.0),
               child: Center(
                 child: Text(
                   'Grab Or Gone Deals',
@@ -66,8 +66,8 @@ class _grab_Or_Gone extends State<grab_Or_Gone> {
             ),
           ],
         ),
-        SizedBox(height: 10,),
-        Container(
+        const SizedBox(height: 10,),
+        SizedBox(
           height: 300,
           child: ListView.builder(
             controller: controller,
@@ -79,13 +79,13 @@ class _grab_Or_Gone extends State<grab_Or_Gone> {
               return GestureDetector(
                 onTap: (){
                   try {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListScroll()));
                 } catch (e) {
                   print("Navigation error: $e");
                 }
                 },
                 child: Container(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Image.asset(
                     imagePaths[index],
                     fit: BoxFit.cover,

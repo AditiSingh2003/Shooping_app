@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:quickalert/quickalert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -18,9 +17,9 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final FirebaseAuthService _auth = FirebaseAuthService();
   final AuthService authService = AuthService();
   bool isChecked = false;
@@ -30,7 +29,7 @@ class _SignUpState extends State<SignUp> {
   void failedMessage(){
     QuickAlert.show(
       context: context,
-      headerBackgroundColor: Color(0xFFF08080),
+      headerBackgroundColor: const Color(0xFFF08080),
       type: QuickAlertType.error,
       title: 'Login Failed',
       text: 'Password or Email is incorrect or Empty',
@@ -58,9 +57,9 @@ class _SignUpState extends State<SignUp> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFF08080),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            color:  const Color(0xFFF08080),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -97,23 +96,23 @@ class _SignUpState extends State<SignUp> {
 
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Create Account',
+              const Text('Create Account',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: const Icon(Icons.person),
                   hintText: "Enter Your Name",
                   labelText: "Name",
                   border: OutlineInputBorder(
@@ -121,13 +120,13 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: const Icon(Icons.email),
                   hintText: "Enter Your Email",
                   labelText: "Email",
                   border: OutlineInputBorder(
@@ -135,14 +134,14 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
                 obscureText: _obscureText,
                 controller: _passwordController,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
+                  prefixIcon: const Icon(Icons.lock),
                   suffixIcon: GestureDetector(
                     onTap: (){
                       setState(() {
@@ -158,13 +157,13 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
+                  prefixIcon: const Icon(Icons.lock),
                   hintText: "Confirm Your Password",
                   labelText: "Confirm Password",
                   border: OutlineInputBorder(
@@ -172,7 +171,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -185,7 +184,7 @@ class _SignUpState extends State<SignUp> {
                       });
                     },
                   ),
-                  Expanded(
+                  const Expanded(
                     child: Text("I agree to the Terms of Service and Privacy Policy",
                     style: TextStyle(
                       fontSize: 16,
@@ -194,7 +193,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -214,7 +213,7 @@ class _SignUpState extends State<SignUp> {
                             await _auth.signUpWithEmailAndPassword(_emailController.text, _passwordController.text);
                             Navigator.pushAndRemoveUntil(
                               context,
-                              MaterialPageRoute(builder: (context) => HomeScreen()),
+                              MaterialPageRoute(builder: (context) => const HomeScreen()),
                               (route) => false,
                             );
                           }
@@ -224,23 +223,23 @@ class _SignUpState extends State<SignUp> {
                             print(e);
                           }
                         },
-                        child: Text("Sign Up",
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(150, 50), backgroundColor: const Color(0xFFF08080),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: const Text("Sign Up",
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
                         ),
                         ),
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(150, 50), backgroundColor: Color(0xFFF08080),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                  Text("Already have an account?",
+                  const Text("Already have an account?",
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -248,9 +247,9 @@ class _SignUpState extends State<SignUp> {
                   TextButton(
                     onPressed: () async {
                       Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Login_Signup()));
+                      MaterialPageRoute(builder: (context) => const Login_Signup()));
                     },
-                    child: Text("Login",
+                    child: const Text("Login",
                     style: TextStyle(
                       fontSize: 20,
                       color:Color(0xFFF08080),

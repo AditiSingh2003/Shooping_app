@@ -34,15 +34,15 @@ class _best_On_Melang extends State<best_On_Melang> {
       children: [
         Stack(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: Image.asset('assets/images/Heading.png',
               width:MediaQuery.of(context).size.width,
               fit: BoxFit.fill,
               )
               ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 15.0),
               child: Center(
                 child: Text(
                   'Best On Melang',
@@ -56,7 +56,7 @@ class _best_On_Melang extends State<best_On_Melang> {
             ),
           ],
         ),
-        Container(
+        SizedBox(
           height: 280,
           child: ListView.builder(
             controller: controller,
@@ -66,14 +66,14 @@ class _best_On_Melang extends State<best_On_Melang> {
               return GestureDetector(
                 onTap: (){
                   try {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListScroll()));
                 } catch (e) {
                   print("Navigation error: $e");
                 }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     child: Column(
                       children: [

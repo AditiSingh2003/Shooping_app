@@ -76,62 +76,62 @@ class _InsertState extends State<Insert> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 controller: productName,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Product Name',
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 controller: description,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Description',
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 controller: mrp,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'MRP',
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 controller: offPrice,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Off Price',
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 controller: offer,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Offer',
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: GestureDetector(
@@ -149,17 +149,17 @@ class _InsertState extends State<Insert> {
                               File(i1.text),
                               fit: BoxFit.cover,
                             )
-                          : Center(
+                          : const Center(
                               child: Text('Tap to select image'),
                             ),
                     ),
-                    SizedBox(height: 8),
-                    Text('Image 1'),
+                    const SizedBox(height: 8),
+                    const Text('Image 1'),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: GestureDetector(
@@ -177,31 +177,31 @@ class _InsertState extends State<Insert> {
                               File(i2.text),
                               fit: BoxFit.cover,
                             )
-                          : Center(
+                          : const Center(
                               child: Text('Tap to select image'),
                             ),
                     ),
-                    SizedBox(height: 8),
-                    Text('Image 2'),
+                    const SizedBox(height: 8),
+                    const Text('Image 2'),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             ElevatedButton(
               onPressed: () {
                 insertData();
               },
-              child: Text(
-                'Insert',
-                style: TextStyle(fontSize: 18),
-              ),
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black, backgroundColor: Color(0xFFF08080),
+                foregroundColor: Colors.black, backgroundColor: const Color(0xFFF08080),
                 minimumSize: Size(MediaQuery.of(context).size.width/2, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
+              ),
+              child: const Text(
+                'Insert',
+                style: TextStyle(fontSize: 18),
               ),
             ),
           ],

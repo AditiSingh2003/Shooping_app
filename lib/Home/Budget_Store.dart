@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../ProductDetails/scrollScreen.dart';
 
@@ -51,18 +50,18 @@ class _BudgetStore extends State<BudgetStore> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 5,),
+        const SizedBox(height: 5,),
         Stack(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: Image.asset('assets/images/Heading.png',
               width:MediaQuery.of(context).size.width,
               fit: BoxFit.fill,
               )
               ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 15.0),
               child: Center(
                 child: Text(
                   'More On Categories',
@@ -76,7 +75,7 @@ class _BudgetStore extends State<BudgetStore> {
             ),
           ],
         ),
-        Container(
+        SizedBox(
           height: 400,
           child: ListView.builder(
             controller: controller,
@@ -87,18 +86,18 @@ class _BudgetStore extends State<BudgetStore> {
               return GestureDetector(
                 onTap: (){
                   try {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListScroll()));
                 } catch (e) {
                   print("Navigation error: $e");
                 }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     child: Column(
                       children: [
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                         Container( // Set your desired border radius
                             child: Image.asset(
                               imagePaths1[index],
@@ -106,7 +105,7 @@ class _BudgetStore extends State<BudgetStore> {
                               fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(height: 5,),
+                        const SizedBox(height: 5,),
                         Container( // Set your desired border radius
                             child: Image.asset(
                               imagePaths2[index],

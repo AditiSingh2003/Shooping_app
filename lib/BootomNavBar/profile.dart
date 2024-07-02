@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shopping_app/BootomNavBar/fetchData.dart';
-import 'package:shopping_app/BootomNavBar/insertItem.dart';
-import 'package:shopping_app/Home/homeScreen.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -17,7 +14,7 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Profile',
+        title: const Text('Profile',
         style: TextStyle(
           color: Colors.black,
           fontSize: 24,
@@ -31,15 +28,15 @@ class _ProfileState extends State<Profile> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
+              const Center(
                 child: CircleAvatar(
                   radius: 70,
                   foregroundImage: AssetImage('assets/images/my_photo.png',
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
-              Center(
+              const SizedBox(height: 20,),
+              const Center(
                 child: Text('adithakurti@gmail.com',
                 style: TextStyle(
                   fontSize: 20,
@@ -47,27 +44,27 @@ class _ProfileState extends State<Profile> {
                 ),
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Center(
                 child: ElevatedButton(
                 onPressed: () {
                   // Navigator.push(context,
                   //   MaterialPageRoute(builder: (context) => HomeScreen()));
                 },
-                child: Text(
-                  'Edit Profiler',
-                  style: TextStyle(fontSize: 18),
-                ),
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black, backgroundColor: Color(0xFFF08080),
+                  foregroundColor: Colors.black, backgroundColor: const Color(0xFFF08080),
                   minimumSize: Size(MediaQuery.of(context).size.width/2, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
+                child: const Text(
+                  'Edit Profiler',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Container(
                 color: Colors.white,
                 height: 60,
@@ -75,7 +72,7 @@ class _ProfileState extends State<Profile> {
                   // Navigator.push(context,
                   //   MaterialPageRoute(builder: (context) => Insert()));
                 },
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -99,7 +96,7 @@ class _ProfileState extends State<Profile> {
                 ),
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Container(
                 color: Colors.white,
                 height: 60,
@@ -107,7 +104,7 @@ class _ProfileState extends State<Profile> {
                   // Navigator.push(context,
                   //   MaterialPageRoute(builder: (context) => FetchData()));
                 },
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -131,12 +128,12 @@ class _ProfileState extends State<Profile> {
                 ),
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Container(
                 color: Colors.white,
                 height: 60,
                 child: ElevatedButton(onPressed: (){},
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -160,12 +157,12 @@ class _ProfileState extends State<Profile> {
                 ),
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Container(
                 color: Colors.white,
                 height: 60,
                 child: ElevatedButton(onPressed: (){},
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -189,7 +186,7 @@ class _ProfileState extends State<Profile> {
                 ),
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               
               Container(
                 color: Colors.white,
@@ -197,7 +194,7 @@ class _ProfileState extends State<Profile> {
                 child: ElevatedButton(onPressed: (){
                   SystemNavigator.pop();
                 },
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -241,13 +238,20 @@ class _ProfileState extends State<Profile> {
     return
       ElevatedButton(
         onPressed: (){},
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.black, backgroundColor: Colors.white,
+          minimumSize: Size(MediaQuery.of(context).size.width, 60),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
           Row(
             children: [
               Icon(icon),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               Text(text,
               style: TextStyle(
               fontSize: 18,
@@ -258,13 +262,6 @@ class _ProfileState extends State<Profile> {
           ),
         Icon(back)
           ],
-        ),
-        style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.black, backgroundColor: Colors.white,
-          minimumSize: Size(MediaQuery.of(context).size.width, 60),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
         ),
         );
   }

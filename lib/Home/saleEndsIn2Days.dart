@@ -34,15 +34,15 @@ class _Home1 extends State<Home1> {
       children: [
         Stack(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: Image.asset('assets/images/Heading.png',
               width:MediaQuery.of(context).size.width,
               fit: BoxFit.fill,
               )
               ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 15.0),
               child: Center(
                 child: Text(
                   'Sale Ends In 2 Days',
@@ -56,7 +56,7 @@ class _Home1 extends State<Home1> {
             ),
           ],
         ),
-        SizedBox(height: 10,),
+        const SizedBox(height: 10,),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
@@ -72,7 +72,7 @@ class _Home1 extends State<Home1> {
               return GestureDetector(
                 onTap: (){
                   try {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListScroll()));
                 } catch (e) {
                   print("Navigation error: $e");
                 }

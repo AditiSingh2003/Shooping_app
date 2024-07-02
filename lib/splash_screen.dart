@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(seconds: 3),
       () { Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => Login_Signup()),
+        MaterialPageRoute(builder: (context) => const Login_Signup()),
       );
       },
     );
@@ -24,8 +24,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFFF08080),
-      child: Center(
+      color: const Color(0xFFF08080),
+      child: const Center(
         child: Text(
           'Melang',
           style: TextStyle(

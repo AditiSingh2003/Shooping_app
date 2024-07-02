@@ -27,7 +27,7 @@ class _CatScrollState extends State<CatScroll> {
     return Container(
       child: Column(
         children: [
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           SizedBox(
             height: 90,
             child: ListView.builder(
@@ -37,21 +37,21 @@ class _CatScrollState extends State<CatScroll> {
               GestureDetector(
                 onTap: (){
                   try {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListScroll()));
                 } catch (e) {
                   print("Navigation error: $e");
                 }
                 },
                 child : Container(
-                  margin: EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 10),
                   child: Column(
                     children: [
-                      Container(
+                      SizedBox(
                         height: 80,
                         width: 80,
                         child: Image.asset(ImagePath[index]),
                       ),
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       
                     ],
                   ),

@@ -14,7 +14,7 @@ class ProductDetails extends StatefulWidget {
   final String offer;
   final String documentId;
 
-  ProductDetails({
+  const ProductDetails({
     Key? key,
     required this.productName,
     required this.description,
@@ -74,7 +74,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Mel',
@@ -92,7 +92,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ],
           ),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
@@ -102,25 +102,25 @@ class _ProductDetailsState extends State<ProductDetails> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  icon: Icon(Icons.notifications_active_outlined),
+                  icon: const Icon(Icons.notifications_active_outlined),
                   onPressed: () {
                     // Handle bell action
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.favorite_border_outlined),
+                  icon: const Icon(Icons.favorite_border_outlined),
                   onPressed: () {
                     // Handle heart action
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => WishlistPage()));
+                      MaterialPageRoute(builder: (context) => const WishlistPage()));
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.shopping_cart_outlined),
+                  icon: const Icon(Icons.shopping_cart_outlined),
                   onPressed: () {
                     // Handle cart action
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => addToCart()));
+                      MaterialPageRoute(builder: (context) => const addToCart()));
                   },
                 ),
               ],
@@ -132,21 +132,21 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: 550,
                 width: MediaQuery.of(context).size.width,
                 child: Image.network(widget.i1,
                 fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Center(
                 child: SmoothPageIndicator(
                 controller: controller,
                 count: 2,
-                effect: WormEffect(
+                effect: const WormEffect(
                 activeDotColor: Colors.black,
                 dotColor: Colors.grey,
                 dotHeight: 8,
@@ -155,26 +155,26 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
                 ),
               ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal:15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(widget.productName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w500
                       ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Flexible(
                       child: Text(widget.description,
                       maxLines: 2,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                       ),
@@ -190,25 +190,25 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(
                   children: [
-                    Text( '₹',
+                    const Text( '₹',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500
                     ),
                     ),
                     Text( widget.offerPrice,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500
                     ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
-                    Text('MRP',
+                    const Text('MRP',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -217,24 +217,24 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     ),
                     Text(widget.mrp,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.lineThrough,
                       color: Colors.grey
                     ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text( widget.offer,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Colors.green
                     ),
                     ),
-                    Text('% off',
+                    const Text('% off',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -243,21 +243,21 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ],
                 ),
-                SizedBox(height: 10,),
-                Text('CHECK DELIVEREY & SERVICES',
+                const SizedBox(height: 10,),
+                const Text('CHECK DELIVEREY & SERVICES',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: Colors.grey,
                     ),
                   ),
-                  child: TextField(
+                  child: const TextField(
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -266,14 +266,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Row(
                     children: [
                       Icon(Icons.delivery_dining_outlined,
                       size: 30,
                       color: Colors.grey.shade700
                       ),
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       Text('Get it by Mon',
                       style: TextStyle(
                         fontSize: 18,
@@ -283,14 +283,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Row(
                     children: [
                       Icon(Icons.attach_money_outlined,
                       size: 30,
                       color: Colors.grey.shade700
                       ),
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       Text('Pay On Delivery Available',
                       style: TextStyle(
                         fontSize: 18,
@@ -300,14 +300,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Row(
                     children: [
                       Icon(Icons.swap_calls,
                       size: 30,
                       color: Colors.grey.shade700
                       ),
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       Text('Easy 14 days return and exchange policy',
                       maxLines: 2,
                       style: TextStyle(
@@ -318,32 +318,32 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10,),
-                  Text('Select Size',
+                  const SizedBox(height: 10,),
+                  const Text('Select Size',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       buildSizeButton(0, 'S'),
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       buildSizeButton(1, 'M'),
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       buildSizeButton(2, 'L'),
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       buildSizeButton(3, 'XL'),
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   GestureDetector(
                     onTap: () {
                       if (selectedSizeIndex == -1) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text('Please select a size'),
                           ),
                         );
@@ -364,7 +364,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       child: Center(
                         child: Text(
                           isCart ? 'Go to Cart' : 'Add to Cart',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
@@ -373,15 +373,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10,),
-                  Text('Product Details',
+                  const SizedBox(height: 10,),
+                  const Text('Product Details',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
                   ),
-                  SizedBox(height: 10,),
-                  Padding(
+                  const SizedBox(height: 10,),
+                  const Padding(
                     padding: EdgeInsets.only(left: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -414,20 +414,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ],
                     ),
                     ),
-                    SizedBox(height: 10,),
-                    Text('Material & Care',
+                    const SizedBox(height: 10,),
+                    const Text('Material & Care',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
                     ),
-                    SizedBox(height: 10,),
-                    Text('The Model is wearing size S',
+                    const SizedBox(height: 10,),
+                    const Text('The Model is wearing size S',
                     style: TextStyle(
                       fontSize: 16,
                     ),
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
               ],
             ),
           ),

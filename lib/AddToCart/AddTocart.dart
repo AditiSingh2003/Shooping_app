@@ -31,7 +31,7 @@ class _addToCartState extends State<addToCart> {
           break;
         case 3:
           Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));
+                    MaterialPageRoute(builder: (context) => const Profile()));
           break;
       }
     });
@@ -40,7 +40,7 @@ class _addToCartState extends State<addToCart> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Add To',
@@ -58,7 +58,7 @@ class _addToCartState extends State<addToCart> {
               ),
             ],
           ),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
@@ -68,7 +68,7 @@ class _addToCartState extends State<addToCart> {
             onPressed: (){
               Navigator.pushNamed(context, '/wishlist');
             },
-            icon: Icon(Icons.favorite_border),
+            icon: const Icon(Icons.favorite_border),
           ),
         ],
       ),
@@ -76,7 +76,7 @@ class _addToCartState extends State<addToCart> {
         stream:  FirebaseFirestore.instance.collection('AddToCart').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: Text(
                 'Hold A Second!',
                 maxLines: 3,
@@ -93,7 +93,7 @@ class _addToCartState extends State<addToCart> {
           }
 
           if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
-            return Center(
+            return const Center(
               child: Text(
                 'Your Cart is empty',
                 style: TextStyle(
@@ -145,7 +145,7 @@ class _addToCartState extends State<addToCart> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("${data['productName']}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w500
                               ),
@@ -158,7 +158,7 @@ class _addToCartState extends State<addToCart> {
                                 child: Text( '${data['description']}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w400
                                 ),
@@ -169,25 +169,25 @@ class _addToCartState extends State<addToCart> {
                           Row(
                             children: [
                               Text('₹ ${data['offPrice']}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500
                               ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Text('₹ ${data['mrp']}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 decoration: TextDecoration.lineThrough,
                               ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Text('${data['offer']}% off',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.green,
@@ -198,7 +198,7 @@ class _addToCartState extends State<addToCart> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -207,7 +207,7 @@ class _addToCartState extends State<addToCart> {
                               deleteProductByNameCart(product);
                             },
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              padding: const EdgeInsets.symmetric(horizontal: 12),
                               child: Container(
                               height: 50,
                               width: MediaQuery.of(context).size.width/2.2,
@@ -215,7 +215,7 @@ class _addToCartState extends State<addToCart> {
                                 color: Colors.black,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Center(
+                              child: const Center(
                                 child: Text( 'Remove from Cart',
                                   style: TextStyle(
                                     color: Colors.white,
@@ -231,10 +231,10 @@ class _addToCartState extends State<addToCart> {
                         onTap: (){
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => PaymentPage()));
+                            MaterialPageRoute(builder: (context) => const PaymentPage()));
                         },
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
                           child: Container(
                           height: 50,
                           width: MediaQuery.of(context).size.width/2.5,
@@ -242,7 +242,7 @@ class _addToCartState extends State<addToCart> {
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text( 'Pay To Buy',
                               style: TextStyle(
                                 color: Colors.white,
@@ -256,7 +256,7 @@ class _addToCartState extends State<addToCart> {
                   ),
                       ],
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                   ],
                 ),
               ),
@@ -266,7 +266,7 @@ class _addToCartState extends State<addToCart> {
         }
         ),
         bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined,
             color:  Colors.black,

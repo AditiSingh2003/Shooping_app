@@ -21,13 +21,14 @@ class _Login_SignupState extends State<Login_Signup> {
   void failedMessage(){
     QuickAlert.show(
       context: context,
-      headerBackgroundColor: Color(0xFFF08080),
+      headerBackgroundColor: const Color(0xFFF08080),
       type: QuickAlertType.error,
       title: 'Login Failed',
       text: 'Password or Email is incorrect or Empty',
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -40,9 +41,9 @@ class _Login_SignupState extends State<Login_Signup> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFF08080),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            color:  const Color(0xFFF08080),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -81,7 +82,7 @@ class _Login_SignupState extends State<Login_Signup> {
         child: Container(
           child: Column(
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Mel',
@@ -104,15 +105,15 @@ class _Login_SignupState extends State<Login_Signup> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextFormField(
                   controller: _emailController,
-                  validator: (_emailController) {
-                  if (_emailController!.isEmpty) {
+                  validator: (emailController) {
+                  if (emailController!.isEmpty) {
                     return 'Email cannot be empty';
                   }
                   return null; // Return null for valid input
@@ -120,18 +121,18 @@ class _Login_SignupState extends State<Login_Signup> {
                   decoration: InputDecoration(
                     hintText: 'Email',
                     labelText: 'Email',
-                    prefixIcon: Icon(Icons.email_outlined),
+                    prefixIcon: const Icon(Icons.email_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextFormField(
                   obscureText: _obscureText,
                   controller: _passwordController,
@@ -146,7 +147,7 @@ class _Login_SignupState extends State<Login_Signup> {
                     },
                     child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
                   ),
-                    prefixIcon: Icon(Icons.key),
+                    prefixIcon: const Icon(Icons.key),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -162,7 +163,7 @@ class _Login_SignupState extends State<Login_Signup> {
                       // Navigator.pushNamedAndRemoveUntil(
                         // context, '/HomeScreen', (route) => false);
                     },
-                    child: Text('Forgot Password ?',
+                    child: const Text('Forgot Password ?',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -172,12 +173,12 @@ class _Login_SignupState extends State<Login_Signup> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextButton(
                 onPressed: () async {
                 try {
@@ -189,7 +190,7 @@ class _Login_SignupState extends State<Login_Signup> {
                   if(userCredential.user?.uid != null)
                   {
                     Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                    MaterialPageRoute(builder: (context) => const HomeScreen()));
                   }
                   print('Login successful: ${userCredential.user?.uid}');
                 } on FirebaseAuthException catch (e) {
@@ -198,13 +199,13 @@ class _Login_SignupState extends State<Login_Signup> {
                 }
               },
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFFF08080),
+                    backgroundColor: const Color(0xFFF08080),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Login',
                     style: TextStyle(
                       color: Colors.black,
@@ -214,23 +215,23 @@ class _Login_SignupState extends State<Login_Signup> {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Don\'t have an account ?',
+                  const Text('Don\'t have an account ?',
                   style: TextStyle(
                     fontSize: 18,
                   ),
                   ),
                   TextButton(onPressed: (){
                     Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SignUp()));
+                    MaterialPageRoute(builder: (context) => const SignUp()));
                   },
-                  child: Text('Sign Up',
+                  child: const Text('Sign Up',
                   style: TextStyle(
                     fontSize: 20,
                     color: Color(0xFFF08080),
@@ -240,7 +241,7 @@ class _Login_SignupState extends State<Login_Signup> {
                 ],
               ),
               
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -248,16 +249,16 @@ class _Login_SignupState extends State<Login_Signup> {
                 children: [
                   TextButton(onPressed: (){
                     Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MobileOtp()));
+                    MaterialPageRoute(builder: (context) => const MobileOtp()));
                   },
-                  child: Text('Use Mobile Number',
+                  child: const Text('Use Mobile Number',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                   ),
                   )
                   ),
-                  Icon(Icons.phone,)
+                  const Icon(Icons.phone,)
                 ],
               )
             ],

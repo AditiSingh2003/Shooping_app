@@ -28,9 +28,9 @@ class _OTPState extends State<OTP> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFF08080),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            color:  const Color(0xFFF08080),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -71,26 +71,26 @@ class _OTPState extends State<OTP> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text("Enter OTP",
+                const Text("Enter OTP",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold
                 ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text("We have sent you an OTP on your mobile number",
+                const Text("We have sent you an OTP on your mobile number",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey
                 ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Pinput(
@@ -101,10 +101,10 @@ class _OTPState extends State<OTP> {
                     });
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Container(
+                SizedBox(
                   width: 300,
                   height: 50,
                   child: ElevatedButton(
@@ -114,7 +114,7 @@ class _OTPState extends State<OTP> {
                       await auth.signInWithCredential(credential);
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                          MaterialPageRoute(builder: (context) => const HomeScreen()),
                           (route) => false,
                         );
                       }
@@ -122,30 +122,30 @@ class _OTPState extends State<OTP> {
                         print(e);
                       }
                     },
-                    child: Text("Verify OTP",
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFF08080),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)
+                      )
+                    ),
+                    child: const Text("Verify OTP",
                     style: TextStyle(
                       color:Colors.black,
                       fontSize: 18,
                     ),
                     ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFF08080),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)
-                      )
-                    ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text("Didn't receive OTP ?",
+                const Text("Didn't receive OTP ?",
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey
                 ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextButton(
@@ -154,7 +154,7 @@ class _OTPState extends State<OTP> {
                     MobileOtp.verify = verificationId;
                     };
                   },
-                  child: Text("Resend OTP",
+                  child: const Text("Resend OTP",
                   style: TextStyle(
                     fontSize: 16,
                     color: Color(0xFFF08080),

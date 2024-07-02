@@ -20,7 +20,7 @@ class _ProductState extends State<Product> {
         stream: FirebaseFirestore.instance.collection('items').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: Text(
                 'Hold A Second!',
                 maxLines: 3,
@@ -37,7 +37,7 @@ class _ProductState extends State<Product> {
           }
 
           if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
-            return Center(
+            return const Center(
               child: Text('No data available.'),
             );
           }
@@ -84,7 +84,7 @@ class _ProductState extends State<Product> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("${data['productName']}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w500
                               ),
@@ -97,7 +97,7 @@ class _ProductState extends State<Product> {
                                 child: Text( '${data['description']}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w400
                                 ),
@@ -108,25 +108,25 @@ class _ProductState extends State<Product> {
                           Row(
                             children: [
                               Text('₹ ${data['offPrice']}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500
                               ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Text('₹ ${data['mrp']}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 decoration: TextDecoration.lineThrough,
                               ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Text('${data['offer']}% off',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.green,
@@ -137,7 +137,7 @@ class _ProductState extends State<Product> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10,)
+                    const SizedBox(height: 10,)
                   ],
                 ),
               ),

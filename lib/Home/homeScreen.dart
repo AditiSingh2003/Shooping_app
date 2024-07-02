@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
           break;
         case 3:
           Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));
+                    MaterialPageRoute(builder: (context) => const Profile()));
           break;
       }
     });
@@ -49,8 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.menu),
-        title: Row(
+        leading: const Icon(Icons.menu),
+        title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Mel',
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
@@ -78,20 +78,20 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  icon: Icon(Icons.notifications_active_outlined),
+                  icon: const Icon(Icons.notifications_active_outlined),
                   onPressed: () {
                     // Handle bell action
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.favorite_border_outlined),
+                  icon: const Icon(Icons.favorite_border_outlined),
                   onPressed: () {
                     // Handle heart action
                     Navigator.pushNamed(context, '/wishlist');
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.shopping_cart_outlined),
+                  icon: const Icon(Icons.shopping_cart_outlined),
                   onPressed: () {
                     // Handle cart action
                     Navigator.pushNamed(context, '/addtocart');
@@ -111,31 +111,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 cursorHeight: 25,
                 decoration: InputDecoration(
                   hintText: 'Search',
-                  prefixIcon: Icon(Icons.search),
-                  suffixIcon: Icon(Icons.mic),
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: const Icon(Icons.mic),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
               ),
-              CatScroll(),
-              Home1(),
-              BannerScroll(),
-              BudgetStore(),
-              skin_Care(),
-              luxe_Brand(),
-              grab_Or_Gone(),
-              more_You_Need(),
-              best_On_Melang(),
-              limited_Time(),
-              treading_Brand(),
-              complete_Look(),
+              const CatScroll(),
+              const Home1(),
+              const BannerScroll(),
+              const BudgetStore(),
+              const skin_Care(),
+              const luxe_Brand(),
+              const grab_Or_Gone(),
+              const more_You_Need(),
+              const best_On_Melang(),
+              const limited_Time(),
+              const treading_Brand(),
+              const complete_Look(),
             ],
           ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined,
             color:  Colors.black,

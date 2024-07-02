@@ -33,9 +33,9 @@ class _MobileOtpState extends State<MobileOtp> {
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width,
-            color:  Color(0xFFF08080),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            color:  const Color(0xFFF08080),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -71,17 +71,17 @@ class _MobileOtpState extends State<MobileOtp> {
       ),
       // body
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Row(
+                const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Mel',
@@ -104,16 +104,16 @@ class _MobileOtpState extends State<MobileOtp> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
-                Text('Enter Your Mobile Number',
+                const Text('Enter Your Mobile Number',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold
                 ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextField(
@@ -140,13 +140,13 @@ class _MobileOtpState extends State<MobileOtp> {
               onPressed: () async {
                 try{
                   await FirebaseAuth.instance.verifyPhoneNumber(
-                  phoneNumber: '${countryCode.text + phone}',
+                  phoneNumber: countryCode.text + phone,
                   verificationCompleted: (PhoneAuthCredential credential) {},
                   verificationFailed: (FirebaseAuthException e) {},
                   codeSent: (String verificationId, int? resendToken) {
                   MobileOtp.verify = verificationId;
                   Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => OTP()));
+                  MaterialPageRoute(builder: (context) => const OTP()));
                   },
                   codeAutoRetrievalTimeout: (String verificationId) {},
                 );
@@ -155,23 +155,23 @@ class _MobileOtpState extends State<MobileOtp> {
                   print(e);
                 }
               },
-              child: Text(
-                'Send OTP',
-                style: TextStyle(fontSize: 18),
-              ),
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black, backgroundColor: Color(0xFFF08080), // Text color
-                minimumSize: Size(double.infinity, 50), // Full width button
+                foregroundColor: Colors.black, backgroundColor: const Color(0xFFF08080), // Text color
+                minimumSize: const Size(double.infinity, 50), // Full width button
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0), // Button border radius
                 ),
+              ),
+              child: const Text(
+                'Send OTP',
+                style: TextStyle(fontSize: 18),
               ),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height*0.3,
             ),
             Container(
-                child: Column(children: [
+                child: const Column(children: [
                   Text(
                     'By continuing, you agree to our',
                     style: TextStyle(color: Colors.grey),

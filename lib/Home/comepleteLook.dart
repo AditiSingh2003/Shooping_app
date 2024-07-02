@@ -34,15 +34,15 @@ class _complete_Look extends State<complete_Look> {
       children: [
         Stack(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: Image.asset('assets/images/Heading.png',
               width:MediaQuery.of(context).size.width,
               fit: BoxFit.fill,
               )
               ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 15.0),
               child: Center(
                 child: Text(
                   'Complete Look',
@@ -56,7 +56,7 @@ class _complete_Look extends State<complete_Look> {
             ),
           ],
         ),
-        Container(
+        SizedBox(
           height: 300,
           child: PageView.builder(
             controller: controller,
@@ -67,14 +67,14 @@ class _complete_Look extends State<complete_Look> {
               return GestureDetector(
                 onTap: (){
                   try {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListScroll()));
                 } catch (e) {
                   print("Navigation error: $e");
                 }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       children: [

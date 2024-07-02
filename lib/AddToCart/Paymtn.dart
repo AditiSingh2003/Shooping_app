@@ -12,7 +12,7 @@ class PaymentPage extends StatefulWidget {
 class _PaymentPageState extends State<PaymentPage> {
 
     var amountController = TextEditingController();
-    var _razorpay = Razorpay();
+    final _razorpay = Razorpay();
 
     @override
   void initState(){
@@ -39,7 +39,7 @@ class _PaymentPageState extends State<PaymentPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text(
+        title: const Text(
           'Payment',
           style: TextStyle(
             color: Colors.black,
@@ -54,16 +54,16 @@ class _PaymentPageState extends State<PaymentPage> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
             child: TextField(
               controller: amountController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Enter Amount',
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: 16.0),
+            margin: const EdgeInsets.symmetric(horizontal: 16.0),
             child: ElevatedButton(
               onPressed: () {
                 var options = {
@@ -81,9 +81,9 @@ class _PaymentPageState extends State<PaymentPage> {
             },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black, // Set the green shade1
-                padding: EdgeInsets.all(16.0), // Adjust padding as needed
+                padding: const EdgeInsets.all(16.0), // Adjust padding as needed
               ),
-              child: Text(
+              child: const Text(
                 'Pay Now',
                 style: TextStyle(
                   fontSize: 20.0,

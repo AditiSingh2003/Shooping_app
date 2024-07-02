@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../ProductDetails/scrollScreen.dart';
 
@@ -42,15 +41,15 @@ class _limited_Time extends State<limited_Time> {
       children: [
         Stack(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: Image.asset('assets/images/Heading.png',
               width:MediaQuery.of(context).size.width,
               fit: BoxFit.fill,
               )
               ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 15.0),
               child: Center(
                 child: Text(
                   'Limited Time Deals',
@@ -64,7 +63,7 @@ class _limited_Time extends State<limited_Time> {
             ),
           ],
         ),
-        Container(
+        SizedBox(
           height: 200,
           child: ListView.builder(
             controller: controller,
@@ -75,14 +74,14 @@ class _limited_Time extends State<limited_Time> {
               return GestureDetector(
                 onTap: (){
                   try {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListScroll()));
                 } catch (e) {
                   print("Navigation error: $e");
                 }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     child: Column(
                       children: [

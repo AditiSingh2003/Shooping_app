@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/ProductDetails/scrollScreen.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class luxe_Brand extends StatefulWidget {
   const luxe_Brand({Key? key}) : super(key: key);
@@ -43,15 +42,15 @@ class _luxe_Brand extends State<luxe_Brand> {
       children: [
         Stack(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: Image.asset('assets/images/Heading.png',
               width:MediaQuery.of(context).size.width,
               fit: BoxFit.fill,
               )
               ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 15.0),
               child: Center(
                 child: Text(
                   'Luxe Brands',
@@ -65,8 +64,8 @@ class _luxe_Brand extends State<luxe_Brand> {
             ),
           ],
         ),
-        SizedBox(height: 10,),
-        Container(
+        const SizedBox(height: 10,),
+        SizedBox(
           height: 220,
           child: ListView.builder(
             controller: controller,
@@ -77,14 +76,14 @@ class _luxe_Brand extends State<luxe_Brand> {
               return GestureDetector(
                 onTap: (){
                   try {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListScroll()));
                 } catch (e) {
                   print("Navigation error: $e");
                 }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     child: Column(
                       children: [

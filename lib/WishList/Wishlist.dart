@@ -31,7 +31,7 @@ class _WishlistPageState extends State<WishlistPage> {
           break;
         case 3:
           Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));
+                    MaterialPageRoute(builder: (context) => const Profile()));
           break;
       }
     });
@@ -40,7 +40,7 @@ class _WishlistPageState extends State<WishlistPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Wish',
@@ -58,7 +58,7 @@ class _WishlistPageState extends State<WishlistPage> {
               ),
             ],
           ),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
@@ -68,7 +68,7 @@ class _WishlistPageState extends State<WishlistPage> {
             onPressed: (){
               Navigator.pushNamed(context, '/addtocart');
             },
-            icon: Icon(Icons.shopping_cart_outlined),
+            icon: const Icon(Icons.shopping_cart_outlined),
           ),
         ],
       ),
@@ -76,7 +76,7 @@ class _WishlistPageState extends State<WishlistPage> {
         stream:  FirebaseFirestore.instance.collection('WishList').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: Text(
                 'Hold A Second!',
                 maxLines: 3,
@@ -93,7 +93,7 @@ class _WishlistPageState extends State<WishlistPage> {
           }
 
           if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
-            return Center(
+            return const Center(
               child: Text(
                 'Your Wishlist is empty',
                 style: TextStyle(
@@ -145,7 +145,7 @@ class _WishlistPageState extends State<WishlistPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("${data['productName']}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w500
                               ),
@@ -158,7 +158,7 @@ class _WishlistPageState extends State<WishlistPage> {
                                 child: Text( '${data['description']}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w400
                                 ),
@@ -169,25 +169,25 @@ class _WishlistPageState extends State<WishlistPage> {
                           Row(
                             children: [
                               Text('₹ ${data['offPrice']}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500
                               ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Text('₹ ${data['mrp']}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 decoration: TextDecoration.lineThrough,
                               ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Text('${data['offer']}% off',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.green,
@@ -198,13 +198,13 @@ class _WishlistPageState extends State<WishlistPage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                     GestureDetector(
                         onTap: (){
                           deleteProductByName(product);
                         },
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
                           child: Container(
                           height: 50,
                           width: MediaQuery.of(context).size.width,
@@ -212,7 +212,7 @@ class _WishlistPageState extends State<WishlistPage> {
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text( 'Remove from Wishlist',
                               style: TextStyle(
                                 color: Colors.white,
@@ -224,7 +224,7 @@ class _WishlistPageState extends State<WishlistPage> {
                           ),
                         ),
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   ],
                 ),
               ),
@@ -234,7 +234,7 @@ class _WishlistPageState extends State<WishlistPage> {
         }
         ),
         bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined,
             color:  Colors.black,

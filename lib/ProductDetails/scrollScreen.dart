@@ -29,7 +29,7 @@ class _ListScrollState extends State<ListScroll> {
           break;
         case 3:
           Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));
+                    MaterialPageRoute(builder: (context) => const Profile()));
           break;
       }
     });
@@ -38,7 +38,7 @@ class _ListScrollState extends State<ListScroll> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Mel',
@@ -56,7 +56,7 @@ class _ListScrollState extends State<ListScroll> {
               ),
             ],
           ),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
@@ -66,23 +66,23 @@ class _ListScrollState extends State<ListScroll> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  icon: Icon(Icons.notifications_active_outlined),
+                  icon: const Icon(Icons.notifications_active_outlined),
                   onPressed: () {
                     // Handle bell action
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => WishlistPage()));
+                      MaterialPageRoute(builder: (context) => const WishlistPage()));
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.favorite_border_outlined),
+                  icon: const Icon(Icons.favorite_border_outlined),
                   onPressed: () {
                     // Handle heart action
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => addToCart()));
+                      MaterialPageRoute(builder: (context) => const addToCart()));
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.shopping_cart_outlined),
+                  icon: const Icon(Icons.shopping_cart_outlined),
                   onPressed: () {
                     // Handle cart action
                   },
@@ -91,7 +91,7 @@ class _ListScrollState extends State<ListScroll> {
             ),
           ],
       ),
-      body: Column(
+      body: const Column(
         children: [
           Expanded(
             child: Product()
@@ -99,7 +99,7 @@ class _ListScrollState extends State<ListScroll> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined,
             color:  Colors.black,

@@ -33,7 +33,7 @@ class _BannerScrollState extends State<BannerScroll> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 190,
       child: Column(
         children: [
@@ -43,18 +43,18 @@ class _BannerScrollState extends State<BannerScroll> {
               itemCount: imagePaths.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 child: GestureDetector(
                   onTap: (){
                   try {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ListScroll()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListScroll()));
                 } catch (e) {
                   print("Navigation error: $e");
                 }
                 },
                   child: Column(
                     children: [
-                      Container(
+                      SizedBox(
                         height: 180,
                         width: MediaQuery.of(context).size.width,
                         child: Image.asset(imagePaths[index]),
@@ -68,7 +68,7 @@ class _BannerScrollState extends State<BannerScroll> {
           SmoothPageIndicator(
             controller: controller,
             count: imagePaths.length,
-            effect: WormEffect(
+            effect: const WormEffect(
               activeDotColor: Colors.black,
               dotColor: Colors.grey,
               dotHeight: 8,
