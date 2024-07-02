@@ -40,7 +40,6 @@ dependencies:
   http:
   smooth_page_indicator:
   firebase_database:
-  image_picker:
   permission_handler:
   razorpay_flutter:
 
